@@ -129,7 +129,7 @@ a { text-decoration: none; }
 
 li { list-style: none; }
 
-img, ion-icon, a, button, time, span { display: block; }
+img, ion-icon, a, button, time, span { display: block; color:var(--orange-yellow-crayola);}
 
 button {
   font: inherit;
@@ -542,7 +542,7 @@ main {
 
 .service-icon-box { margin-bottom: 10px; }
 
-.service-icon-box img { margin: auto; }
+.service-icon-box img { margin: auto; color: var(--orange-yellow-crayola);}
 
 .service-content-box { text-align: center; }
 
@@ -746,15 +746,23 @@ main {
 .clients-item {
   min-width: 50%;
   scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .clients-item img {
-  width: 100%;
+  width: 200px;        /* or any size you prefer */
+  height: 120px;
+  object-fit: contain;
   filter: grayscale(1);
   transition: var(--transition-1);
 }
 
-.clients-item img:hover { filter: grayscale(0); }
+.clients-item img:hover {
+  filter: grayscale(0);
+}
+
 
 
 
