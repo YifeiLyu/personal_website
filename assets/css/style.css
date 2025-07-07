@@ -1019,6 +1019,7 @@ main {
 
 .project-title,
 .project-category { margin-left: 10px; }
+.project-content { margin-left: 10px; }
 
 .project-title {
   color: var(--white-2);
