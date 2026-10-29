@@ -1,0 +1,1036 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="vega_1_f5d6">
+ <link name="base">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/base.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <link name="B_wheel_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/B_wheel_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="B_wheel_j1" type="continuous">
+  <origin xyz="-0.265 0 0.044" rpy="0 0 0" />
+  <parent link="base" />
+  <child link="B_wheel_l1" />
+  <axis xyz="0 0 -1" />
+ </joint>
+ <link name="B_wheel_l2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/B_wheel_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="B_wheel_j2" type="continuous">
+  <origin xyz="-0.03329 0.01652 -0.058" rpy="0 0 0" />
+  <parent link="B_wheel_l1" />
+  <child link="B_wheel_l2" />
+  <axis xyz="0.04517 0.99898 0" />
+ </joint>
+ <link name="R_wheel_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 3.14159" />
+   <geometry>
+    <mesh filename="meshes/wheel_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_wheel_j1" type="revolute">
+  <origin xyz="0.185 -0.225 0.133" rpy="0 0 0" />
+  <parent link="base" />
+  <child link="R_wheel_l1" />
+  <axis xyz="0 0 -1" />
+  <limit lower="-2.722" upper="2.722" effort="6" velocity="3" />
+ </joint>
+ <link name="R_wheel_l2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 3.14159" />
+   <geometry>
+    <mesh filename="meshes/wheel_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_wheel_j2" type="continuous">
+  <origin xyz="0 0.0395 -0.1005" rpy="0 0 0" />
+  <parent link="R_wheel_l1" />
+  <child link="R_wheel_l2" />
+  <axis xyz="0 -1 0" />
+  <limit effort="16" velocity="12" />
+ </joint>
+ <link name="L_wheel_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/wheel_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_wheel_j1" type="revolute">
+  <origin xyz="0.185 0.225 0.133" rpy="0 0 0" />
+  <parent link="base" />
+  <child link="L_wheel_l1" />
+  <axis xyz="0 0 -1" />
+  <limit lower="-2.722" upper="2.722" effort="6" velocity="3" />
+ </joint>
+ <link name="L_wheel_l2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/wheel_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_wheel_j2" type="continuous">
+  <origin xyz="0 -0.0395 -0.1005" rpy="0 0 0" />
+  <parent link="L_wheel_l1" />
+  <child link="L_wheel_l2" />
+  <axis xyz="0 1 0" />
+  <limit effort="16" velocity="12" />
+ </joint>
+ <link name="torso_l1">
+  <visual>
+   <origin xyz="0 0.08 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/torso_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="torso_j1" type="revolute">
+  <origin xyz="-0.235 0.00 0.248" rpy="0 0 0" />
+  <parent link="base" />
+  <child link="torso_l1" />
+  <axis xyz="0 -1 0" />
+  <limit lower="0" upper="1.570" effort="700" velocity="0.9" />
+ </joint>
+ <link name="torso_l2">
+  <visual>
+   <origin xyz="0 0.02 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/torso_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="torso_j2" type="revolute">
+  <origin xyz="0.396 0.00 0.082" rpy="0 0 0" />
+  <parent link="torso_l1" />
+  <child link="torso_l2" />
+  <axis xyz="0 1 0" />
+  <limit lower="0" upper="3.141" effort="380" velocity="0.9" />
+ </joint>
+ <link name="torso_l3">
+  <visual>
+   <origin xyz="0 0.0775 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/torso_l3.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="torso_j3" type="revolute">
+  <origin xyz="-0.40718 0 0.09764" rpy="0 0 0" />
+  <parent link="torso_l2" />
+  <child link="torso_l3" />
+  <axis xyz="0 -1 0" />
+  <limit lower="-1.570" upper="1.570" effort="380" velocity="0.9" />
+ </joint>
+ <link name="arm_center" />
+ <joint name="arm_center_j0" type="fixed">
+  <origin xyz="-0.05908 0 0.44528" rpy="0 0 0" />
+  <parent link="torso_l3" />
+  <child link="arm_center" />
+ </joint>
+ <link name="head_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/head_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="head_j1" type="revolute">
+  <origin xyz="-0.0735 -0.0725 0.014" rpy="0 0 0" />
+  <parent link="arm_center" />
+  <child link="head_l1" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.483" upper="1.483" effort="6" velocity="3.2" />
+ </joint>
+ <link name="head_l2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/head_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="head_j2" type="revolute">
+  <origin xyz="0 0.0725 -0.0035" rpy="0 0 0" />
+  <parent link="head_l1" />
+  <child link="head_l2" />
+  <axis xyz="0 0 1" />
+  <limit lower="-2.792" upper="2.792" effort="2.5" velocity="3.2" />
+ </joint>
+ <link name="head_l3">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/head_l3.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="head_j3" type="revolute">
+  <origin xyz="0 0.002 0.0495" rpy="0 0 0" />
+  <parent link="head_l2" />
+  <child link="head_l3" />
+  <axis xyz="0 -1 0" />
+  <limit lower="-1.378" upper="1.483" effort="6" velocity="3.2" />
+ </joint>
+ <link name="zed_depth_frame" />
+ <joint name="zed_left_depth_mount" type="fixed">
+  <origin xyz="0.025 0.023 0.0489" rpy="-1.57079 0 -1.57079" />
+  <parent link="head_l3" />
+  <child link="zed_depth_frame" />
+  <axis xyz="0 0 0" />
+ </joint>
+ <link name="zed_left_camera" />
+ <joint name="zed_left_camera_mount" type="fixed">
+  <origin xyz="0.0365 0.023 0.0489" rpy="-1.57079 0 -1.57079" />
+  <parent link="head_l3" />
+  <child link="zed_left_camera" />
+  <axis xyz="0 0 0" />
+ </joint>
+ <link name="zed_right_camera" />
+ <joint name="zed_right_camera_mount" type="fixed">
+  <origin xyz="0.0365 -0.027 0.0489" rpy="-1.57079 0 -1.57079" />
+  <parent link="head_l3" />
+  <child link="zed_right_camera" />
+  <axis xyz="0 0 0" />
+ </joint>
+ <link name="L_arm_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/L_arm_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_arm_j1" type="revolute">
+  <origin xyz="0 0.16946 0" rpy="0 0 0" />
+  <parent link="arm_center" />
+  <child link="L_arm_l1" />
+  <axis xyz="0 1 0" />
+  <limit lower="-3.071" upper="3.071" effort="150" velocity="2.4" />
+ </joint>
+ <link name="L_arm_l2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/arm_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_arm_j2" type="revolute">
+  <origin xyz="0.04 0.06 0.0454" rpy="0 0 0" />
+  <parent link="L_arm_l1" />
+  <child link="L_arm_l2" />
+  <axis xyz="0 0 1" />
+  <limit lower="-0.453" upper="1.553" effort="150" velocity="2.4" />
+ </joint>
+ <link name="L_arm_l3">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/arm_l3.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_arm_j3" type="revolute">
+  <origin xyz="0.1644 0 -0.043" rpy="0 0 0" />
+  <parent link="L_arm_l2" />
+  <child link="L_arm_l3" />
+  <axis xyz="1 0 0" />
+  <limit lower="-3.071" upper="3.071" effort="80" velocity="2.7" />
+ </joint>
+ <link name="L_arm_l4">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/arm_l4.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_arm_j4" type="revolute">
+  <origin xyz="0.113 0.0433 0.06" rpy="0 0 0" />
+  <parent link="L_arm_l3" />
+  <child link="L_arm_l4" />
+  <axis xyz="0 1 0" />
+  <limit lower="-3.071" upper="0.244" effort="80" velocity="2.7" />
+ </joint>
+ <link name="L_arm_l5">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/arm_l5.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_arm_j5" type="revolute">
+  <origin xyz="0.1938 -0.0434 -0.04" rpy="0 0 0" />
+  <parent link="L_arm_l4" />
+  <child link="L_arm_l5" />
+  <axis xyz="1 0 0" />
+  <limit lower="-3.071" upper="3.071" effort="25" velocity="2.7" />
+ </joint>
+ <link name="L_arm_l6">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/L_arm_l6.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_arm_j6" type="revolute">
+  <origin xyz="0.0762 0.0319 0" rpy="0 0 0" />
+  <parent link="L_arm_l5" />
+  <child link="L_arm_l6" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.396" upper="1.396" effort="25" velocity="2.7" />
+ </joint>
+ <link name="L_arm_l7">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/arm_l7.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_arm_j7" type="revolute">
+  <origin xyz="0.065 -0.032 0.0319" rpy="0 0 0" />
+  <parent link="L_arm_l6" />
+  <child link="L_arm_l7" />
+  <axis xyz="0 0 1" />
+  <limit lower="-1.378" upper="1.117" effort="25" velocity="2.7" />
+ </joint>
+ <link name="L_arm_l8">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 -1.57079 0" />
+   <geometry>
+    <mesh filename="meshes/arm_l8.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_arm_j8" type="fixed">
+  <origin xyz="0.11597 0 -0.032" rpy="0 1.57079 0" />
+  <parent link="L_arm_l7" />
+  <child link="L_arm_l8" />
+ </joint>
+ <link name="L_ee" />
+ <joint name="L_ee_j0" type="fixed">
+  <origin xyz="0 0 0" rpy="0 0 -1.57079" />
+  <parent link="L_arm_l8" />
+  <child link="L_ee" />
+ </joint>
+ <link name="R_arm_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/R_arm_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_arm_j1" type="revolute">
+  <origin xyz="0 -0.16946 0" rpy="0 0 0" />
+  <parent link="arm_center" />
+  <child link="R_arm_l1" />
+  <axis xyz="0 -1 0" />
+  <limit lower="-3.071" upper="3.071" effort="150" velocity="2.4" />
+ </joint>
+ <link name="R_arm_l2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/arm_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_arm_j2" type="revolute">
+  <origin xyz="0.04 -0.06 0.0454" rpy="0 0 0" />
+  <parent link="R_arm_l1" />
+  <child link="R_arm_l2" />
+  <axis xyz="0 0 1" />
+  <limit lower="-1.553" upper="0.453" effort="150" velocity="2.4" />
+ </joint>
+ <link name="R_arm_l3">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/arm_l3.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_arm_j3" type="revolute">
+  <origin xyz="0.1644 0 -0.043" rpy="0 0 0" />
+  <parent link="R_arm_l2" />
+  <child link="R_arm_l3" />
+  <axis xyz="1 0 0" />
+  <limit lower="-3.071" upper="3.071" effort="80" velocity="2.7" />
+ </joint>
+ <link name="R_arm_l4">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/arm_l4.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_arm_j4" type="revolute">
+  <origin xyz="0.113 0.0433 0.06" rpy="0 0 0" />
+  <parent link="R_arm_l3" />
+  <child link="R_arm_l4" />
+  <axis xyz="0 1 0" />
+  <limit lower="-3.071" upper="0.244" effort="80" velocity="2.7" />
+ </joint>
+ <link name="R_arm_l5">
+  <visual>
+   <origin xyz="0 0 0" rpy="3.14159 0 0" />
+   <geometry>
+    <mesh filename="meshes/arm_l5.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_arm_j5" type="revolute">
+  <origin xyz="0.1938 -0.0434 -0.04" rpy="0 0 0" />
+  <parent link="R_arm_l4" />
+  <child link="R_arm_l5" />
+  <axis xyz="1 0 0" />
+  <limit lower="-3.071" upper="3.071" effort="25" velocity="2.7" />
+ </joint>
+ <link name="R_arm_l6">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/R_arm_l6.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_arm_j6" type="revolute">
+  <origin xyz="0.0762 -0.0319 0" rpy="0 0 0" />
+  <parent link="R_arm_l5" />
+  <child link="R_arm_l6" />
+  <axis xyz="0 -1 0" />
+  <limit lower="-1.396" upper="1.396" effort="25" velocity="2.7" />
+ </joint>
+ <link name="R_arm_l7">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/arm_l7.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_arm_j7" type="revolute">
+  <origin xyz="0.065 0.032 0.0319" rpy="0 0 0" />
+  <parent link="R_arm_l6" />
+  <child link="R_arm_l7" />
+  <axis xyz="0 0 1" />
+  <limit lower="-1.117" upper="1.378" effort="25" velocity="2.7" />
+ </joint>
+ <link name="R_arm_l8">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 -1.57079 0" />
+   <geometry>
+    <mesh filename="meshes/arm_l8.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_arm_j8" type="fixed">
+  <origin xyz="0.11597 0 -0.032" rpy="0 1.57079 0" />
+  <parent link="R_arm_l7" />
+  <child link="R_arm_l8" />
+ </joint>
+ <link name="R_ee" />
+ <joint name="R_ee_j0" type="fixed">
+  <origin xyz="0 0 0" rpy="0 0 1.57079" />
+  <parent link="R_arm_l8" />
+  <child link="R_ee" />
+ </joint>
+ <link name="lidar">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/lidar.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="lidar_mount" type="fixed">
+  <origin xyz="0.2975 0 0.144" rpy="0 0 0" />
+  <parent link="base" />
+  <child link="lidar" />
+ </joint>
+ <link name="imu">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/imu.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="imu_mount" type="fixed">
+  <origin xyz="0.165 0 0.2071" rpy="0 0 0" />
+  <parent link="base" />
+  <child link="imu" />
+ </joint>
+ <link name="L_base_cam">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/base_cam.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_base_cam_mount" type="fixed">
+  <origin xyz="0.02 0.2673 0.208" rpy="0 0 1.5708" />
+  <parent link="base" />
+  <child link="L_base_cam" />
+ </joint>
+ <link name="R_base_cam">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/base_cam.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_base_cam_mount" type="fixed">
+  <origin xyz="0.02 -0.2673 0.208" rpy="0 0 -1.5708" />
+  <parent link="base" />
+  <child link="R_base_cam" />
+ </joint>
+ <link name="F_base_cam">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/base_cam.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="F_base_cam_mount" type="fixed">
+  <origin xyz="0.3373 0 0.208" rpy="0 0 0" />
+  <parent link="base" />
+  <child link="F_base_cam" />
+ </joint>
+ <link name="B_base_cam">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/base_cam.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="B_base_cam_mount" type="fixed">
+  <origin xyz="-0.3303 0 0.176" rpy="0 0 3.1416" />
+  <parent link="base" />
+  <child link="B_base_cam" />
+  <axis xyz="0 0 0" />
+ </joint>
+ <link name="LF_ultrasonic">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/ultrasonic.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="LF_ultrasonic_mount" type="fixed">
+  <origin xyz="0.31642 0.14755 0.15853" rpy="0.01745 -0.41887 0.43633" />
+  <parent link="base" />
+  <child link="LF_ultrasonic" />
+ </joint>
+ <link name="RF_ultrasonic">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/ultrasonic.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="RF_ultrasonic_mount" type="fixed">
+  <origin xyz="0.31642 -0.14755 0.15853" rpy="0.01745 -0.41887 -0.43633" />
+  <parent link="base" />
+  <child link="RF_ultrasonic" />
+  <axis xyz="0 0 0" />
+ </joint>
+ <link name="LB_ultrasonic">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/ultrasonic.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="LB_ultrasonic_mount" type="fixed">
+  <origin xyz="-0.31633 0.14751 0.07886" rpy="0 -0.45379 2.7053" />
+  <parent link="base" />
+  <child link="LB_ultrasonic" />
+  <axis xyz="0 0 0" />
+ </joint>
+ <link name="RB_ultrasonic">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/ultrasonic.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="RB_ultrasonic_mount" type="fixed">
+  <origin xyz="-0.31633 -0.14751 0.07886" rpy="0 -0.45379 -2.70526" />
+  <parent link="base" />
+  <child link="RB_ultrasonic" />
+  <axis xyz="0 0 0" />
+ </joint>
+ <joint name="L_hand_mount" type="fixed">
+  <origin xyz="0.00019 0.00390 0.00014" rpy="-1.57079 1.57079 0" />
+  <parent link="L_arm_l8" />
+  <child link="L_hand_base" />
+ </joint>
+ <link name="L_hand_base">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/connector.glb" />
+   </geometry>
+  </visual>
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/L_hand_base.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <link name="L_th_l0">
+  <visual>
+   <origin xyz="0 0 -0.00580" rpy="3.14159 0 0" />
+   <geometry>
+    <mesh filename="meshes/th_l0.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_th_j0" type="revolute">
+  <origin xyz="-0.04608 0.01984 -0.02684" rpy="0 -0.21841 -0.01325" />
+  <parent link="L_hand_base" />
+  <child link="L_th_l0" />
+  <axis xyz="-1 0 0" />
+  <limit lower="-0.0158" upper="1.605" effort="1.0" velocity="6.28" />
+ </joint>
+ <link name="L_th_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 3.14" />
+   <geometry>
+    <mesh filename="meshes/th_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_th_j1" type="revolute">
+  <origin xyz="-0.00675 0.02098 -0.00270" rpy="0 0 0.01293" />
+  <parent link="L_th_l0" />
+  <child link="L_th_l1" />
+  <axis xyz="0 0 -1" />
+  <limit lower="-0.3468" upper="0.1834" effort="1.0" velocity="6.28" />
+ </joint>
+ <link name="L_th_l2">
+  <visual>
+   <origin xyz="0 0 0.00380" rpy="0 0 3.14159" />
+   <geometry>
+    <mesh filename="meshes/th_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_th_j2" type="revolute">
+  <origin xyz="-0.05088 0.01301 -0.00202" rpy="0 0 0" />
+  <parent link="L_th_l1" />
+  <child link="L_th_l2" />
+  <axis xyz="0 0 -1" />
+  <limit lower="-0.4298" upper="0.2731" effort="0.5" velocity="6.28" />
+  <mimic joint="L_th_j1" multiplier="1.35316" offset="0.00765" />
+ </joint>
+ <link name="L_ff_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/ff_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_ff_j1" type="revolute">
+  <origin xyz="-0.11269 0.03067 -0.00116" rpy="-0.08731 -0.00723 -0.08240" />
+  <parent link="L_hand_base" />
+  <child link="L_ff_l1" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.0946" upper="0.2891" effort="0.5" velocity="6.28" />
+ </joint>
+ <link name="L_ff_l2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/ff_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_ff_j2" type="revolute">
+  <origin xyz="-0.03406 0 -0.01141" rpy="0 0 -0.00010" />
+  <parent link="L_ff_l1" />
+  <child link="L_ff_l2" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.2101" upper="0.3681" effort="0.5" velocity="6.28" />
+  <mimic joint="L_ff_j1" multiplier="1.13028" offset="-0.00053" />
+ </joint>
+ <link name="L_mf_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/mf_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_mf_j1" type="revolute">
+  <origin xyz="-0.11597 0.01047 0.00314" rpy="0 0 -0.01325" />
+  <parent link="L_hand_base" />
+  <child link="L_mf_l1" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.0844" upper="0.2801" effort="0.5" velocity="6.28" />
+ </joint>
+ <link name="L_mf_l2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/mf_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_mf_j2" type="revolute">
+  <origin xyz="-0.03829 0 -0.01467" rpy="0 0 0" />
+  <parent link="L_mf_l1" />
+  <child link="L_mf_l2" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.2026" upper="0.3533" effort="0.5" velocity="6.28" />
+  <mimic joint="L_mf_j1" multiplier="1.13311" offset="-0.00079" />
+ </joint>
+ <link name="L_rf_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/rf_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_rf_j1" type="revolute">
+  <origin xyz="-0.11324 -0.00937 0.00239" rpy="0 0 0.05660" />
+  <parent link="L_hand_base" />
+  <child link="L_rf_l1" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.0154" upper="0.2840" effort="0.5" velocity="6.28" />
+ </joint>
+ <link name="L_rf_l2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/rf_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_rf_j2" type="revolute">
+  <origin xyz="-0.03364 0 -0.01258" rpy="0 0 -0.00010" />
+  <parent link="L_rf_l1" />
+  <child link="L_rf_l2" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.1156" upper="0.3599" effort="0.5" velocity="6.28" />
+  <mimic joint="L_rf_j1" multiplier="1.12935" offset="0.00065" />
+ </joint>
+ <link name="L_lf_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/lf_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_lf_j1" type="revolute">
+  <origin xyz="-0.10947 -0.02964 -0.00017" rpy="0.08722 -0.01033 0.11755" />
+  <parent link="L_hand_base" />
+  <child link="L_lf_l1" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.0118" upper="0.2811" effort="0.5" velocity="6.28" />
+ </joint>
+ <link name="L_lf_l2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/lf_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="L_lf_j2" type="revolute">
+  <origin xyz="-0.02974 5.03150E-05 -0.01163" rpy="2.10550E-05 0 0" />
+  <parent link="L_lf_l1" />
+  <child link="L_lf_l2" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.1073" upper="0.4014" effort="0.5" velocity="6.28" />
+  <mimic joint="L_lf_j1" multiplier="1.15037" offset="0.00186" />
+ </joint>
+ <link name="L_th_tip" />
+ <joint name="L_th_tip_j0" type="fixed">
+  <origin xyz="-0.0230 0.0151 0.0018" rpy="0 0 0" />
+  <parent link="L_th_l2" />
+  <child link="L_th_tip" />
+ </joint>
+ <link name="L_ff_tip" />
+ <joint name="L_ff_tip_j0" type="fixed">
+  <origin xyz="-0.0300 0.0 -0.0400" rpy="0 0 0" />
+  <parent link="L_ff_l2" />
+  <child link="L_ff_tip" />
+ </joint>
+ <link name="L_mf_tip" />
+ <joint name="L_mf_tip_j0" type="fixed">
+  <origin xyz="-0.0304 0.0 -0.0397" rpy="0 0 0" />
+  <parent link="L_mf_l2" />
+  <child link="L_mf_tip" />
+ </joint>
+ <link name="L_rf_tip" />
+ <joint name="L_rf_tip_j0" type="fixed">
+  <origin xyz="-0.0272 0 -0.0420" rpy="0 0 0" />
+  <parent link="L_rf_l2" />
+  <child link="L_rf_tip" />
+ </joint>
+ <link name="L_lf_tip" />
+ <joint name="L_lf_tip_j0" type="fixed">
+  <origin xyz="-0.0182 0 -0.0306" rpy="0 0 0" />
+  <parent link="L_lf_l2" />
+  <child link="L_lf_tip" />
+ </joint>
+ <joint name="R_hand_mount" type="fixed">
+  <origin xyz="0.00019 -0.00390 0.00014" rpy="1.57079 1.57079 0" />
+  <parent link="R_arm_l8" />
+  <child link="R_hand_base" />
+ </joint>
+ <link name="R_hand_base">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/connector.glb" />
+   </geometry>
+  </visual>
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/R_hand_base.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <link name="R_th_l0">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/th_l0.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_th_j0" type="revolute">
+  <origin xyz="-0.04608 -0.01984 -0.02687" rpy="-0.00287 -0.21841 0.01325" />
+  <parent link="R_hand_base" />
+  <child link="R_th_l0" />
+  <axis xyz="1 0 0" />
+  <limit lower="-0.0158" upper="1.605" effort="1.0" velocity="6.28" />
+ </joint>
+ <link name="R_th_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/th_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_th_j1" type="revolute">
+  <origin xyz="-0.00675 -0.02097 -0.00276" rpy="3.13870 -0.00004 3.12870" />
+  <parent link="R_th_l0" />
+  <child link="R_th_l1" />
+  <axis xyz="0 0 -1" />
+  <limit lower="-0.3468" upper="0.1834" effort="1.0" velocity="6.28" />
+ </joint>
+ <link name="R_th_l2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/th_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_th_j2" type="revolute">
+  <origin xyz="0.05088 -0.01301 0.00202" rpy="0 0 0" />
+  <parent link="R_th_l1" />
+  <child link="R_th_l2" />
+  <axis xyz="0 0 -1" />
+  <limit lower="-0.4298" upper="0.2731" effort="0.5" velocity="6.28" />
+  <mimic joint="R_th_j1" multiplier="1.35316" offset="0.00765" />
+ </joint>
+ <link name="R_ff_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/ff_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_ff_j1" type="revolute">
+  <origin xyz="-0.11269 -0.03066 -0.00119" rpy="0.08731 -0.00723 0.08240" />
+  <parent link="R_hand_base" />
+  <child link="R_ff_l1" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.0946" upper="0.2891" effort="0.5" velocity="6.28" />
+ </joint>
+ <link name="R_ff_l2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/ff_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_ff_j2" type="revolute">
+  <origin xyz="-0.03406 0 -0.01141" rpy="-0.00003 0 0.00010" />
+  <parent link="R_ff_l1" />
+  <child link="R_ff_l2" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.2101" upper="0.3681" effort="0.5" velocity="6.28" />
+  <mimic joint="R_ff_j1" multiplier="1.13028" offset="-0.00053" />
+ </joint>
+ <link name="R_mf_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/mf_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_mf_j1" type="revolute">
+  <origin xyz="-0.11597 -0.01047 0.00312" rpy="0 0 0.01325" />
+  <parent link="R_hand_base" />
+  <child link="R_mf_l1" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.0844" upper="0.2801" effort="0.5" velocity="6.28" />
+ </joint>
+ <link name="R_mf_l2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/mf_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_mf_j2" type="revolute">
+  <origin xyz="-0.03829 0 -0.01467" rpy="0 0 0" />
+  <parent link="R_mf_l1" />
+  <child link="R_mf_l2" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.2026" upper="0.3533" effort="0.5" velocity="6.28" />
+  <mimic joint="R_mf_j1" multiplier="1.13311" offset="-0.00079" />
+ </joint>
+ <link name="R_rf_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/rf_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_rf_j1" type="revolute">
+  <origin xyz="-0.11324 0.00937 0.00237" rpy="0 0 -0.05660" />
+  <parent link="R_hand_base" />
+  <child link="R_rf_l1" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.0154" upper="0.2840" effort="0.5" velocity="6.28" />
+ </joint>
+ <link name="R_rf_l2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/rf_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_rf_j2" type="revolute">
+  <origin xyz="-0.03364 0 -0.01258" rpy="-0.00003 0 0.00010" />
+  <parent link="R_rf_l1" />
+  <child link="R_rf_l2" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.1156" upper="0.3599" effort="0.5" velocity="6.28" />
+  <mimic joint="R_rf_j1" multiplier="1.12935" offset="0.00065" />
+ </joint>
+ <link name="R_lf_l1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/lf_l1.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_lf_j1" type="revolute">
+  <origin xyz="-0.10947 0.02964 -0.00019" rpy="-0.08722 -0.01033 -0.11755" />
+  <parent link="R_hand_base" />
+  <child link="R_lf_l1" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.0118" upper="0.2811" effort="0.5" velocity="6.28" />
+ </joint>
+ <link name="R_lf_l2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/lf_l2.glb" />
+   </geometry>
+  </visual>
+ </link>
+ <joint name="R_lf_j2" type="revolute">
+  <origin xyz="-0.02974 -0.00005 -0.01163" rpy="-0.00002 0 0" />
+  <parent link="R_lf_l1" />
+  <child link="R_lf_l2" />
+  <axis xyz="0 1 0" />
+  <limit lower="-1.1073" upper="0.4014" effort="0.5" velocity="6.28" />
+  <mimic joint="R_lf_j1" multiplier="1.15037" offset="0.00186" />
+ </joint>
+ <link name="R_th_tip" />
+ <joint name="R_th_tip_j0" type="fixed">
+  <origin xyz="0.0230 -0.0151 -0.0018" rpy="0 0 0" />
+  <parent link="R_th_l2" />
+  <child link="R_th_tip" />
+ </joint>
+ <link name="R_ff_tip" />
+ <joint name="R_ff_tip_j0" type="fixed">
+  <origin xyz="-0.0300 0.0 -0.0400" rpy="0 0 0" />
+  <parent link="R_ff_l2" />
+  <child link="R_ff_tip" />
+ </joint>
+ <link name="R_mf_tip" />
+ <joint name="R_mf_tip_j0" type="fixed">
+  <origin xyz="-0.0304 0.0 -0.0397" rpy="0 0 0" />
+  <parent link="R_mf_l2" />
+  <child link="R_mf_tip" />
+ </joint>
+ <link name="R_rf_tip" />
+ <joint name="R_rf_tip_j0" type="fixed">
+  <origin xyz="-0.0272 0 -0.0420" rpy="0 0 0" />
+  <parent link="R_rf_l2" />
+  <child link="R_rf_tip" />
+ </joint>
+ <link name="R_lf_tip" />
+ <joint name="R_lf_tip_j0" type="fixed">
+  <origin xyz="-0.0182 0 -0.0306" rpy="0 0 0" />
+  <parent link="R_lf_l2" />
+  <child link="R_lf_tip" />
+ </joint>
+</robot>

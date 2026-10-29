@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="turtlebot3_burger">
+ <material name="white">
+  <color rgba="1.0 1.0 1.0 1.0" />
+ </material>
+ <material name="red">
+  <color rgba="0.8 0.0 0.0 1.0" />
+ </material>
+ <material name="brown">
+  <color rgba="0.8706 0.8118 0.7647 1.0" />
+ </material>
+ <material name="orange">
+  <color rgba="1.0000 0.4235 0.0392 1.0" />
+ </material>
+ <material name="grey">
+  <color rgba="0.5 0.5 0.5 1.0" />
+ </material>
+ <material name="green">
+  <color rgba="0.0 0.8 0.0 1.0" />
+ </material>
+ <material name="blue">
+  <color rgba="0.0 0.0 0.8 1.0" />
+ </material>
+ <material name="light_black">
+  <color rgba="0.4 0.4 0.4 1.0" />
+ </material>
+ <material name="dark">
+  <color rgba="0.3 0.3 0.3 1.0" />
+ </material>
+ <material name="black">
+  <color rgba="0.0 0.0 0.0 1.0" />
+ </material>
+ <material name="black">
+  <color rgba="0.0 0.0 0.0 1.0" />
+ </material>
+ <material name="dark">
+  <color rgba="0.3 0.3 0.3 1.0" />
+ </material>
+ <material name="light_black">
+  <color rgba="0.4 0.4 0.4 1.0" />
+ </material>
+ <material name="blue">
+  <color rgba="0.0 0.0 0.8 1.0" />
+ </material>
+ <material name="green">
+  <color rgba="0.0 0.8 0.0 1.0" />
+ </material>
+ <material name="grey">
+  <color rgba="0.5 0.5 0.5 1.0" />
+ </material>
+ <material name="orange">
+  <color rgba="1.0 0.4235 0.0392 1.0" />
+ </material>
+ <material name="brown">
+  <color rgba="0.8706 0.8118 0.7647 1.0" />
+ </material>
+ <material name="red">
+  <color rgba="0.8 0.0 0.0 1.0" />
+ </material>
+ <material name="white">
+  <color rgba="1.0 1.0 1.0 1.0" />
+ </material>
+ <link name="${namespace}base_footprint" />
+ <joint name="${namespace}base_joint" type="fixed">
+  <parent link="${namespace}base_footprint" />
+  <child link="${namespace}base_link" />
+  <origin xyz="0.0 0.0 0.010" rpy="0 0 0" />
+ </joint>
+ <link name="${namespace}base_link">
+  <visual>
+   <origin xyz="-0.032 0 0.0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/burger_base.glb" scale="0.001 0.001 0.001" />
+   </geometry>
+   <material name="light_black" />
+  </visual>
+ </link>
+ <joint name="${namespace}wheel_left_joint" type="continuous">
+  <parent link="${namespace}base_link" />
+  <child link="${namespace}wheel_left_link" />
+  <origin xyz="0.0 0.08 0.023" rpy="-1.57 0 0" />
+  <axis xyz="0 0 1" />
+ </joint>
+ <link name="${namespace}wheel_left_link">
+  <visual>
+   <origin xyz="0 0 0" rpy="1.57 0 0" />
+   <geometry>
+    <mesh filename="meshes/left_tire.glb" scale="0.001 0.001 0.001" />
+   </geometry>
+   <material name="dark" />
+  </visual>
+ </link>
+ <joint name="${namespace}wheel_right_joint" type="continuous">
+  <parent link="${namespace}base_link" />
+  <child link="${namespace}wheel_right_link" />
+  <origin xyz="0.0 -0.080 0.023" rpy="-1.57 0 0" />
+  <axis xyz="0 0 1" />
+ </joint>
+ <link name="${namespace}wheel_right_link">
+  <visual>
+   <origin xyz="0 0 0" rpy="1.57 0 0" />
+   <geometry>
+    <mesh filename="meshes/right_tire.glb" scale="0.001 0.001 0.001" />
+   </geometry>
+   <material name="dark" />
+  </visual>
+ </link>
+ <joint name="${namespace}caster_back_joint" type="fixed">
+  <parent link="${namespace}base_link" />
+  <child link="${namespace}caster_back_link" />
+  <origin xyz="-0.081 0 -0.004" rpy="-1.57 0 0" />
+ </joint>
+ <link name="${namespace}caster_back_link">
+    </link>
+ <joint name="${namespace}imu_joint" type="fixed">
+  <parent link="${namespace}base_link" />
+  <child link="${namespace}imu_link" />
+  <origin xyz="-0.032 0 0.068" rpy="0 0 0" />
+ </joint>
+ <link name="${namespace}imu_link" />
+ <joint name="${namespace}scan_joint" type="fixed">
+  <parent link="${namespace}base_link" />
+  <child link="${namespace}base_scan" />
+  <origin xyz="-0.032 0 0.172" rpy="0 0 0" />
+ </joint>
+ <link name="${namespace}base_scan">
+  <visual>
+   <origin xyz="0 0 0.0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/lds.glb" scale="0.001 0.001 0.001" />
+   </geometry>
+   <material name="dark" />
+  </visual>
+ </link>
+</robot>

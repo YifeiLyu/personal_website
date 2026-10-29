@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="syncro_5">
+ <link name="base_link">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/base_link.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.75294 0.75294 0.75294 1" />
+   </material>
+  </visual>
+ </link>
+ <link name="link1">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/link1.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.75294 0.75294 0.75294 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="Joint_1" type="revolute">
+  <origin xyz="0 0 0" rpy="0 0 0" />
+  <parent link="base_link" />
+  <child link="link1" />
+  <axis xyz="0 0 1" />
+  <limit lower="-3.14159" upper="3.14159" effort="150" velocity="2" />
+ </joint>
+ <link name="link2">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/link2.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.75294 0.75294 0.75294 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="Joint_2" type="revolute">
+  <origin xyz="0 0 0.346" rpy="0 0 0" />
+  <parent link="link1" />
+  <child link="link2" />
+  <axis xyz="-1 0 0" />
+  <limit lower="-3.14159" upper="3.14159" effort="150" velocity="2" />
+ </joint>
+ <link name="link3">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/link3.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.75294 0.75294 0.75294 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="Joint_3" type="revolute">
+  <origin xyz="0 0 0.305" rpy="0 0 0" />
+  <parent link="link2" />
+  <child link="link3" />
+  <axis xyz="1 0 0" />
+  <limit lower="-3.14159" upper="3.14159" effort="150" velocity="2" />
+ </joint>
+ <link name="link4">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/link4.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.75294 0.75294 0.75294 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="Joint_4" type="revolute">
+  <origin xyz="-0.0009127 0.36813 0" rpy="0 0 0" />
+  <parent link="link3" />
+  <child link="link4" />
+  <axis xyz="0 1 0" />
+  <limit lower="-3.14159" upper="3.14159" effort="80" velocity="2" />
+ </joint>
+ <link name="link5">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/link5.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.75294 0.75294 0.75294 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="Joint_5" type="revolute">
+  <origin xyz="0 0 0" rpy="0 0 0" />
+  <parent link="link4" />
+  <child link="link5" />
+  <axis xyz="0.5 0.86603 0" />
+  <limit lower="-3.14159" upper="3.14159" effort="80" velocity="2" />
+ </joint>
+ <link name="end-effector">
+    </link>
+ <joint name="Joint_6" type="revolute">
+  <origin xyz="0 0 -0.0975" rpy="0 3.14 0" />
+  <parent link="link5" />
+  <child link="end-effector" />
+  <axis xyz="0 0 1" />
+  <limit lower="-3.14159" upper="3.14159" effort="80" velocity="2" />
+ </joint>
+</robot>

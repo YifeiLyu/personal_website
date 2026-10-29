@@ -1,1612 +1,667 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yifei Lyu</title>
-
-  <!--
-    - favicon
-  -->
-  <link rel="shortcut icon" href="./assets/images/web.ico" type="image/x-icon">
-
-  <!--
-    - custom css link
-  -->
-  <link rel="stylesheet" href="./assets/css/style.css">
-
-  <!--
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yifei Lyu · Robotics Software Engineer</title>
+<meta name="description" content="Yifei Lyu is a Robotics Software Engineer at Dexmate, with 3+ years taking humanoids, quadrupeds, cobots and AGVs from simulation to real hardware: RL locomotion, whole-body tracking and model-based control.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Yifei Lyu · Robotics Software Engineer">
+<meta property="og:description" content="Robots that work in the real world: humanoids, quadrupeds, cobots and AGVs, from simulation to hardware.">
+<link rel="shortcut icon" href="./assets/images/web.ico" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/css/style.css">
+<!-- module map for the 3D viewer, which loads only when its section nears the viewport -->
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","three/examples/jsm/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/","urdf-loader":"https://cdn.jsdelivr.net/npm/urdf-loader@0.13.1/src/URDFLoader.js"}}</script>
+<!-- inline so the reveal styles (.js .rv) apply from the first paint -->
+<script>document.documentElement.classList.add("js")</script>
+<script src="./assets/js/script.js" defer onerror="document.documentElement.classList.remove('js')"></script>
 </head>
-
 <body>
-
-  <!--
-    - #MAIN
-  -->
-
-  <main>
-
-    <!--
-      - #SIDEBAR
-    -->
-
-    <aside class="sidebar" data-sidebar>
-
-      <div class="sidebar-info">
-
-        <figure class="avatar-box">
-          <img src="./assets/images/my-avatar.png" alt="Richard hanrick" width="80">
-        </figure>
-
-        <div class="info-content">
-          <h1 class="name" title="Yifei Lyu">Yifei Lyu</h1>
-
-          <p class="title">Robotics Software Engineer</p>
-        </div>
-
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-
-          <ion-icon name="chevron-down"></ion-icon>
-        </button>
-
-      </div>
-
-      <div class="sidebar-info_more">
-
-        <div class="separator"></div>
-
-        <ul class="contacts-list">
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="mail-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-
-              <a href="mailto:yifei_lyu@berkeley.edu" class="contact-link">yifei_lyu@berkeley.edu</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="phone-portrait-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Phone</p>
-
-              <a href="tel:+6419991220" class="contact-link">+1 (641) 999-1220</a>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="calendar-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Birthday</p>
-
-              <time datetime="1999-12">December, 1999</time>
-            </div>
-
-          </li>
-
-          <li class="contact-item">
-
-            <div class="icon-box">
-              <ion-icon name="location-outline"></ion-icon>
-            </div>
-
-            <div class="contact-info">
-              <p class="contact-title">Location</p>
-
-              <address>Fremont, California, USA</address>
-            </div>
-
-          </li>
-
-
-        <li class="contact-item">
-
-          <div class="icon-box">
-            <ion-icon name="logo-linkedin"></ion-icon>
-          </div>
-
-          <div class="contact-info">
-            <p class="contact-title">Linkedin</p>
-
-            <a href="https://www.linkedin.com/in/yifeilyu-berkeley/" class="contact-link">https://www.linkedin.com/in/yifeilyu-berkeley/</a>
-          </div>
-
-        </li>
-
-        </ul>
-
-        <div class="separator"></div>
-
-          
-
-        </ul>
-
-      </div>
-
-    </aside>
-
-
-
-
-
-    <!--
-      - #main-content
-    -->
-
-    <div class="main-content">
-
-      <!--
-        - #NAVBAR
-      -->
-
-      <nav class="navbar">
-
-        <ul class="navbar-list">
-
-          <li class="navbar-item">
-            <button class="navbar-link  active" data-nav-link>About</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Resume</button>
-          </li>
-
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Robot (Professional)</button>
-          </li>
-          
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Robot (Personal)</button>
-          </li>
-
-          <!-- <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Blog</button>
-          </li> -->
-
-          <!-- <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li> -->
-
-        </ul>
-
-      </nav>
-
-
-
-
-
-      <!--
-        - #ABOUT
-      -->
-
-      <article class="about  active" data-page="about">
-
-        <header>
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-
-        <section class="about-text">
-          <p>
-            I’m a Robotics Software Engineer with a strong foundation in AI, control systems, 
-            motion planning, and computer vision. 
-            
-          </p>
-
-          <p>
-            I hold a Master’s degree in Electrical Engineering and Computer Sciences (EECS) from 
-            UC Berkeley and a Bachelor's in Robotics Engineering from Southeast University. 
-          </p>
-          
-          <p>
-          My work spans across quadruped robots, humanoid robots, warehouse AGVs, AMRs, and collaborative robots, with hands-on experience in both industry and academic research. 
-          </p>
-
-          <p>
-            I’m passionate about building intelligent robotic systems that operate reliably in dynamic real-world environments.
-          </p>
-        
-        </section>
-
-
-        <!--
-          - service
-        -->
-
-        <section class="service">
-
-          <h3 class="h3 service-title">What i'm doing</h3>
-
-          <ul class="service-list">
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <ion-icon name="body-outline" style="font-size: 35px;"></ion-icon>
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Humanoid software stack</h4>
-
-                <p class="service-item-text">
-                  Currently developing 2 humanoid robots. Built the whole simulation pipeline in Mujoco. 
-                  Developed the whole Reinforcement Learning pipeline in Mujoco Playground.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <ion-icon name="construct-outline" style="font-size: 35px;"></ion-icon>
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Quadruped software stack</h4>
-
-                <p class="service-item-text">
-                  Implemented an Extended Kalman Filter for state estimation from IMU and joint encoders, 
-                  tuned a low-level impedance controller, 
-                  and developed a Whole-Body Control (WBC) system integrated with a 
-                  Model Predictive Control (MPC) framework for optimized motion planning and control.
-                  <a href="https://www.linkedin.com/posts/addverb_trakr-addverbs-quadruped-ugcPost-7298287760946147329-aEnu?utm_source=share&utm_medium=member_desktop&rcm=ACoAADJYml8B7WkVYDFSgHYp88pMRqZjULw7CYQ" class="contact-link">(link)</a> 
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <ion-icon name="cloud-outline" style="font-size: 35px;"></ion-icon>
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">AI (DL, RL, and LLM)</h4>
-
-                <p class="service-item-text">
-                  Collaborated with Intel and Supermicro to develop LLM-based intelligent voice-controlled robot management software.
-                  <a href="https://www.linkedin.com/posts/intel-corporation_ai-agv-intel-activity-7274317401402306561-LeBI?utm_source=share&utm_medium=member_desktop&rcm=ACoAADJYml8B7WkVYDFSgHYp88pMRqZjULw7CYQ" class="contact-link">(link)</a> 
-                  Built and simulated diverse robot models in MuJoCo and trained quadruped Reinforcement Learning algorithms in Isaac Sim.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <!-- <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40"> -->
-                <ion-icon name="build-outline" style="font-size: 35px;"></ion-icon>
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title"> AGV software stack</h4>
-
-                <p class="service-item-text">
-                  Simulated an Extended Kalman Filter, Pure Pursuit controller, and Bezier curve path planner in MATLAB/Simulink. 
-                  Rewrote the AGV ROS stack in multithreaded C++ for improved performance—integrating motor control, 
-                  BMS, FMS client, IMU, barcode scanner, EKF, and PID controller—reducing CPU usage from 72% to 13%. Developed a new EKF for robust sensor fusion and designed
-                   a curved-trajectory controller for efficient 90° turns, cutting travel time by one-third.
-                   <a href="https://addverb.com/robotic-sorter/" class="contact-link">(link)</a> 
-                </p>
-              </div>
-
-            </li>
-
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <!-- <img src="./assets/images/briefcase-outline.svg" alt="briefcase icon" width="40"> -->
-                <ion-icon name="briefcase-outline" style="font-size: 35px;"></ion-icon>
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Robot Deployment / Customer Support</h4>
-
-                <p class="service-item-text">
-                  Deployed a 76 AGVs sorting solution in Addverb x DoorDash project.
-                  <a href="https://www.linkedin.com/posts/addverb_new-site-goes-live-in-new-jersey-activity-7315321799947210753-bwxs?utm_source=share&utm_medium=member_desktop&rcm=ACoAADJYml8B7WkVYDFSgHYp88pMRqZjULw7CYQ" class="contact-link">(link)</a>
-                  Set up 2 AMRs and 1 Multi-Carton Picking Robot in Addverb x Purdue project.
-                  <a href="https://www.linkedin.com/posts/addverb_veloce-multi-carton-picking-robot-activity-7221839430146306049-Ythu?utm_source=share&utm_medium=member_desktop&rcm=ACoAADJYml8B7WkVYDFSgHYp88pMRqZjULw7CYQ" class="contact-link">(link)</a>
-                  Provided customers with on-site mobile robotics software support in Addverb x DHL project.
-                  <a href="https://www.linkedin.com/posts/addverb_addverb-i-dhl-activity-7171458005744431104-5EWj?utm_source=share&utm_medium=member_desktop&rcm=ACoAADJYml8B7WkVYDFSgHYp88pMRqZjULw7CYQ" class="contact-link">(link)</a> 
-                  And have extensive hands-on robot experience.
-                </p>
-              </div>
-
-            </li>
-
-            <li class="service-item">
-
-              <div class="service-icon-box">
-                <ion-icon name="fish-outline" style="font-size: 35px;"></ion-icon>
-              </div>
-
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Personal development</h4>
-
-                <p class="service-item-text">
-                  Built custom LeRobot robotic arms; explored advanced Vision-Language Action (VLA) models for embodied AI.
-                   Coached teams for VEX AI Robotics competitions.
-                </p>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-
-        <!--
-          - testimonials
-        -->
-
-        <!-- <section class="testimonials">
-
-          <h3 class="h3 testimonials-title">Testimonials</h3>
-
-          <ul class="testimonials-list has-scrollbar">
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
-                </figure>
-
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
-
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                    lot of experience
-                    and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                    consectetur adipiscing
-                    elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                  </p>
-                </div>
-
-              </div>
-            </li>
-
-          </ul>
-
-        </section> -->
-
-
-        <!--
-          - testimonials modal
-        -->
-
-        <div class="modal-container" data-modal-container>
-
-          <div class="overlay" data-overlay></div>
-
-          <section class="testimonials-modal">
-
-            <button class="modal-close-btn" data-modal-close-btn>
-              <ion-icon name="close-outline"></ion-icon>
-            </button>
-
-            <div class="modal-img-wrapper">
-              <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
-              </figure>
-
-              <img src="./assets/images/icon-quote.svg" alt="quote icon">
-            </div>
-
-            <div class="modal-content">
-
-              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
-
-              <time datetime="2021-06-14">14 June, 2021</time>
-
-              <div data-modal-text>
-                <p>
-                  Richard was hired to create a corporate identity. We were very pleased with the work done. She has a
-                  lot of experience
-                  and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt
-                  consectetur adipiscing
-                  elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                </p>
-              </div>
-
-            </div>
-
-          </section>
-
-        </div>
-
-
-        <!--
-          - Experience
-        -->
-
-        <section class="Experience">
-
-          <h3 class="h3 clients-title">Experience</h3>
-
-          <ul class="clients-list has-scrollbar">
-
-            <li class="clients-item">
-              <a href="https://www.berkeley.edu/">
-                <img src="./assets/images/ucb.svg" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="https://www.seu.edu.cn/english/">
-                <img src="./assets/images/seu.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="https://www.cuhk.edu.cn/en">
-                <img src="./assets/images/hk.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="https://www.addverb.com">
-                <img src="./assets/images/addverb.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="https://recf.org/teams/competition/vex-ai-robotics-competition/">
-                <img src="./assets/images/vex.png" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="https://huggingface.co/lerobot">
-                <img src="./assets/images/lerobot.png" alt="client logo">
-              </a>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #RESUME
-      -->
-
-      <article class="resume" data-page="resume">
-
-        <header>
-          <h2 class="h2 article-title">Resume</h2>
-        </header>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Education</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">University of California, Berkeley</h4>
-
-              <span>2022 — 2023</span>
-
-              <p class="timeline-text">
-                Master of Engineering - MEng, Electrical Engineering and Computer Science<br>
-                - GPA: 3.9/4.0<br>
-                - Fung Institute's Scholarship<br>
-                - Member of Barsky Lab (Prof. Brian A. Barsky)<br>
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Southeast University</h4>
-
-              <span>2018 — 2022</span>
-
-              <p class="timeline-text">
-                Bachelor of Engineering - BE, Robotics<br>
-                - GPA: 3.88/4.0, Ranking: 2/37<br>
-                - President’s Scholarship (Top 1%)<br>
-                - Member of OneCo Lab (Prof. Wankou Yang)<br>
-              </p>
-
-            </li>
-
-          </ol>
-
-        </section>
-
-        <section class="timeline">
-
-          <div class="title-wrapper">
-            <div class="icon-box">
-              <ion-icon name="book-outline"></ion-icon>
-            </div>
-
-            <h3 class="h3">Experience</h3>
-          </div>
-
-          <ol class="timeline-list">
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">R&D Software Engineer - Advanced Robotics Team</h4>
-
-              <span>Mar 2024 - Present</span>
-
-              <p class="timeline-text">
-                Addverb<br> Full-time
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">R&D Software Engineer - Mobile Robotics Team</h4>
-
-              <span>May 2023 - Feb 2024</span>
-
-              <p class="timeline-text">
-                Addverb<br> Internship
-              </p>
-
-            </li>
-
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Deep Learning / Computer Vision Engineer</h4>
-
-              <span>Feb 2022 - Mar 2022</span>
-
-              <p class="timeline-text">
-                Jia Kang Zhong Zhi Technology Co., Ltd. <br>Internship
-              </p>
-
-            </li>
-
-            <li class="timeline-item">
-
-              <h4 class="h4 timeline-item-title">Research Assistant</h4>
-
-              <span>Jul 2021 - Sep 2021</span>
-
-              <p class="timeline-text">
-                The Chinese University of Hong Kong (Shenzhen) <br> Full-time
-              </p>
-
-            </li>
-
-          </ol>
-
-        </section>
-
-        <section class="skill">
-
-          <h3 class="h3 skills-title">My skills</h3>
-
-          <ul class="skills-list content-card">
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">C++</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Python</h5>
-                <data value="70">70%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">MATLAB/Simulink</h5>
-                <data value="70">70%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">ROS 1/2</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">PyTorch</h5>
-                <data value="80">80%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">MuJoCo</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Isaac Sim/Gym</h5>
-                <data value="80">80%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Gazebo</h5>
-                <data value="70">70%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Webots</h5>
-                <data value="70">70%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 70%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">Pinocchio</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-
-            <li class="skills-item">
-
-              <div class="title-wrapper">
-                <h5 class="h5">OCS2</h5>
-                <data value="90">90%</data>
-              </div>
-
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-
-      <!--
-        - #Robot (professional)
-      -->
-
-      <article class="robot (professional)" data-page="robot (professional)">
-
-        <header>
-          <h2 class="h2 article-title">Robot</h2>
-        </header>
-
-        <section class="projects">
-
-          <ul class="filter-list">
-
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>Legged robot</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>wheeled robot</button>
-            </li>
-
-            <li class="filter-item">
-              <button data-filter-btn>robot arm</button>
-            </li>
-
-          </ul>
-
-          <div class="filter-select-box">
-
-            <button class="filter-select" data-select>
-
-              <div class="select-value" data-selecct-value>Select category</div>
-
-              <div class="select-icon">
-                <ion-icon name="chevron-down"></ion-icon>
-              </div>
-
-            </button>
-
-            <ul class="select-list">
-
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>legged robot</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>wheeled robot</button>
-              </li>
-
-              <li class="select-item">
-                <button data-select-item>robot arm</button>
-              </li>
-
-            </ul>
-
-          </div>
-
-          <ul class="project-list">
-
-            <li class="project-item  active" data-filter-item data-category="legged robot">
-              <a href="https://addverb.ai/" target="_blank">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/elix.png" alt="Elix" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Elix</h3>
-                <p class="project-content"> 
-                  2025 <br>
-                  Addverb, United States <br>
-                  Development <br>
-                </p>
-                <p class="project-category">legged robot</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="legged robot">
-              <a href="https://addverb.com/press-release/addverb-launches-new-warehouse-robots-trakr-2-0-brisk-and-hoca-at-logimat-india-2025/" target="_blank">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/trakr2.png" alt="Trakr2" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Trakr 2.0</h3>
-                <p class="project-content"> 
-                  2025 <br>
-                  Addverb, United States <br>
-                  Development <br>
-                </p>
-                <p class="project-category">legged robot</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="legged robot">
-              <a href="https://addverb.com/trakr-indias-homegrown-robotic-dog-quadruped/"  target="_blank">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/trakr.webp" alt="Trakr" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Trakr</h3>
-                <p class="project-content"> 
-                  2024 - 2025 <br>
-                  Addverb, United States <br>
-                  Development <br>
-                </p>
-                <p class="project-category">legged robot</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="wheeled robot">
-              <a href="https://addverb.com/robotic-sorter/"  target="_blank">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/zippy_40.webp" alt="Zippy40" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Zippy40 (AGV)</h3>
-                <p class="project-content"> 
-                  2024 - 2025 <br>
-                  Addverb x DHL, United States <br>Addverb x DoorDash, United States<br>
-                  Deployment/Support <br>
-                </p>
-
-                <p class="project-category">wheeled robot</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="robot arm">
-              <a href="https://addverb.com/products/cobot/"  target="_blank">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/syncro.webp" alt="syncro" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Syncro (Cobot)</h3>
-                <p class="project-content"> 
-                  2024 <br>
-                  Addverb, United States <br>
-                  Development <br>
-                </p>
-                <p class="project-category">robot arm</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="wheeled robot">
-              <a href="https://addverb.com/autonomous-mobile-robot/" target="_blank">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/dynamo_200.webp" alt="Dynamo" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Dynamo (AMR)</h3>
-                <p class="project-content"> 
-                  2024 <br>
-                  Addverb x Purdue University, United States <br>
-                  Deployment <br>
-                </p>
-                <p class="project-category">wheeled robot</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="wheeled robot">
-              <a href="https://addverb.com/multi-carton-picking-robot/"  target="_blank">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/veloce.webp" alt="Veloce" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Veloce (Multi-Carton Picking Robot)</h3>
-                
-                <p class="project-content"> 
-                  2024 <br>
-                  Addverb x Purdue University, United States <br>
-                  Deployment <br>
-                </p>
-
-                <p class="project-category">wheeled robot</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="robot arm">
-              <a href="https://www.elephantrobotics.com/en/mycobot-en/"  target="_blank">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/mycobot.png" alt="mycobot" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">myCobot 280</h3>
-                <p class="project-content"> 
-                  2024 <br>
-                  Addverb, United States <br>
-                  Development <br>
-                </p>
-                <p class="project-category">robot arm</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="wheeled robot">
-              <a href="https://addverb.com/robotic-sorter/"  target="_blank">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/zippy_10.webp" alt="Zippy10" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Zippy10 (AGV)</h3>
-                <p class="project-content"> 
-                  2023 - 2024 <br>
-                  Addverb, United States <br>
-                  Development <br>
-                </p>
-                <p class="project-category">wheeled robot</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="legged robot">
-              <a href="https://www.mi.com/cyberdog/gallery"  target="_blank">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/cyberdog.jpeg" alt="cyberdog" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Xiaomi CyberDog</h3>
-                
-                <p class="project-content"> 
-                  2022 <br>
-                  Southeast University, China <br>
-                  Development <br>
-                </p>
-
-                <p class="project-category">legged robot</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="robot arm">
-              <a href="https://en.estun.com/?list_148/1308.html" target="_blank">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/estun.png" alt="estun" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">ESTUN SCARA</h3>
-                
-                <p class="project-content"> 
-                  2022 <br>
-                  Southeast University, China <br>
-                  Development <br>
-                </p>
-
-                <p class="project-category">robot arm</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="wheeled robot">
-              <a href="https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/"  target="_blank">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/turtlebot.png" alt="Turtlebot" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Turtlebot3</h3>
-                <p class="project-content"> 
-                  2021 - 2022<br>
-                  Southeast University, China <br>
-                  Development<br>
-                </p>
-
-                <p class="project-category">wheeled robot</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="wheeled robot">
-              <a href="https://robotsguide.com/robots/pr2"  target="_blank">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/pr2.png" alt="PR2" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">PR2</h3>
-                
-                <p class="project-content"> 
-                  2021 <br>
-                  Southeast University, China <br>
-                  Development <br>
-                </p>
-
-                <p class="project-category">wheeled robot</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="robot arm">
-              <a href="https://www.efort.com.cn/web/upload/2025/05/06/17465024973829ub3ra.pdf" target="_blank">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/robot_arm.png" alt="EFORT" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">EFORT ER3A-C60</h3>
-                
-                <p class="project-content"> 
-                  2021 <br>
-                  Southeast University, China <br>
-                  Development <br>
-                </p>
-
-                <p class="project-category">robot arm</p>
-
-              </a>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article>
-
-      <!--
-        - #Robot (personal)
-      -->
-
-      <article class="robot (personal)" data-page="robot (personal)">
-
-        <header>
-          <h2 class="h2 article-title">Robot</h2>
-        </header>
-
-        
-
-          <ul class="project-list">
-
-            <li class="project-item  active" data-filter-item data-category="wheeled robot">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/vex.jpeg" alt="VEX AI Customized Robot" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">VEX AI Customized Robot</h3>
-                <p class="project-content"> 
-                  2024 - 2025 <br>
-                  Personal development, United States <br>
-                  Development <br>
-                </p>
-                <p class="project-category">wheeled robot</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="robot arm">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/so101.jpeg" alt="SO-101" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">LeRobot SO-101/100</h3>
-                <p class="project-content"> 
-                  2024 - 2025 <br>
-                  Personal development, United States <br>
-                  Development <br>
-                </p>
-                <p class="project-category">robot arm</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="wheeled robot">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/vexiq.png" alt="vexiq" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">VEX IQ Customized Robot</h3>
-                <p class="project-content"> 
-                  2024 <br>
-                  Personal development, United States <br>
-                  Development <br>
-                </p>
-                <p class="project-category">wheeled robot</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="wheeled robot">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/jetbot.png" alt="jetbot" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Jetbot</h3>
-                <p class="project-content"> 
-                  2023 <br>
-                  Personal development, United States <br>
-                  Development <br>
-                </p>
-                <p class="project-category">wheeled robot</p>
-
-              </a>
-            </li>
-            
-
-          </ul>
-
-        </section>
-
-      </article>
-
-
-
-
-      <!--
-        - #BLOG
-      -->
-
-      <!-- <article class="blog" data-page="blog">
-
-        <header>
-          <h2 class="h2 article-title">Blog</h2>
-        </header>
-
-        <section class="blog-posts">
-
-          <ul class="blog-posts-list">
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design conferences in 2022</h3>
-
-                  <p class="blog-text">
-                    Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Best fonts every designer</h3>
-
-                  <p class="blog-text">
-                    Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design digest #80</h3>
-
-                  <p class="blog-text">
-                    Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">UI interactions of the week</h3>
-
-                  <p class="blog-text">
-                    Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">The forgotten art of spacing</h3>
-
-                  <p class="blog-text">
-                    Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-            <li class="blog-post-item">
-              <a href="#">
-
-                <figure class="blog-banner-box">
-                  <img src="./assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy">
-                </figure>
-
-                <div class="blog-content">
-
-                  <div class="blog-meta">
-                    <p class="blog-category">Design</p>
-
-                    <span class="dot"></span>
-
-                    <time datetime="2022-02-23">Fab 23, 2022</time>
-                  </div>
-
-                  <h3 class="h3 blog-item-title">Design digest #79</h3>
-
-                  <p class="blog-text">
-                    Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.
-                  </p>
-
-                </div>
-
-              </a>
-            </li>
-
-          </ul>
-
-        </section>
-
-      </article> -->
-
-
-
-
-
-      <!--
-        - #CONTACT
-      -->
-
-      <article class="contact" data-page="contact">
-
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-        </header>
-
-        <section class="mapbox" data-mapbox>
-          <figure>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101249.44535001907!2d-122.00964495!3d37.53043255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbf46b7e8caf7%3A0x8ada313b89d888d4!2sFremont%2C%20CA!5e0!3m2!1sen!2sus!4v1751587962200!5m2!1sen!2sus"
-              width="400" height="300" loading="lazy"></iframe>
-          </figure>
-        </section>
-
-        <section class="contact-form">
-
-          <h3 class="h3 form-title">Contact Form</h3>
-
-          <form action="#" class="form" data-form>
-
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
-            </div>
-
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-
-            <button class="form-btn" type="submit" disabled data-form-btn>
-              <ion-icon name="paper-plane"></ion-icon>
-              <span>Send Message</span>
-            </button>
-
-          </form>
-
-        </section>
-
-      </article>
-
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav" aria-label="Yifei Lyu">
+  <a class="nav-title" href="#top">Yifei Lyu</a>
+  <div class="explore">
+    <button class="pill out" id="exploreBtn" type="button" aria-expanded="false" aria-controls="exploreMenu">Explore</button>
+    <div class="explore-menu" id="exploreMenu" hidden>
+      <div class="xm-group"><p class="xm-h">Dexmate</p><a href="#dexmate">Legged humanoid</a><a href="#vega">Vega</a></div>
+      <div class="xm-group"><p class="xm-h">Addverb</p><a href="#humanoid">Elixis humanoid</a><a href="#quadruped">Trakr quadruped</a><a href="#cobot">Syncro cobot</a><a href="#agv">Zippy AGVs</a><a href="#deployments">Deployments</a></div>
+      <div class="xm-group"><p class="xm-h">Robots</p><a href="#viewer">3D models</a><a href="#robots">Gallery</a><a href="#personal">Personal builds</a></div>
+      <div class="xm-group"><p class="xm-h">About me</p><a href="#about">About</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#skills">Skills</a></div>
     </div>
+  </div>
+  <a class="pill out hide-sm" href="https://www.linkedin.com/in/yifeilyu-berkeley/" target="_blank" rel="noopener">LinkedIn</a>
+  <a class="pill solid" href="#contact">Contact</a>
+</nav>
 
-  </main>
+<main id="main">
 
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow rv">Robotics Software Engineer</p>
+    <h1 class="hx rv">Robots that work <br>in the real world.</h1>
+    <p class="hero-sub rv">3+ years taking humanoids, quadrupeds, cobots and AGVs from simulation to real hardware.</p>
+  </div>
+  <div class="wrap-mid hero-stage">
+    <div class="ph media rv">
+      <picture>
+        <source media="(max-width:734px)" srcset="./assets/images/site/hero_lineup_phone.jpg" width="1200" height="1000">
+        <img src="./assets/images/site/hero_lineup.jpg" width="2400" height="1200" fetchpriority="high" alt="A lineup of robots Yifei has worked on: Dexmate's Vega wheeled humanoid, the Syncro collaborative arm, the Trakr 2.0 quadruped and a Zippy40 AGV.">
+      </picture>
+    </div>
+    <div class="buy">
+      <img class="buy-av" src="./assets/images/my-avatar.png" width="44" height="44" alt="">
+      <p>Robotics Software Engineer, Dexmate<span>UC Berkeley<span class="buy-loc"> · Fremont, California</span></span></p>
+      <a class="cta" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</section>
 
+<!-- HIGHLIGHTS -->
+<section class="sec band clip" id="highlights" aria-roledescription="carousel" aria-label="Highlights">
+  <div class="wrap headrow">
+    <h2 class="hl-head rv">Get the highlights.</h2>
+    <a class="lnk rv" href="https://www.linkedin.com/in/yifeilyu-berkeley/" target="_blank" rel="noopener">Follow on LinkedIn <span aria-hidden="true">›</span></a>
+  </div>
+  <div class="track hl-track" id="hlTrack">
+    <article class="hcard" aria-roledescription="slide" aria-label="1 of 6">
+      <h3>Hundreds of sim-to-real rounds. <br>RL locomotion and whole-body tracking at Dexmate.</h3>
+      <div class="ph media"><img class="fit" src="./assets/images/site/vega_white.jpg" width="2000" height="1250" loading="lazy" alt="Dexmate's Vega wheeled humanoid, rendered from its public URDF."></div>
+    </article>
+    <article class="hcard bleed" aria-roledescription="slide" aria-label="2 of 6">
+      <h3>Elixis humanoid. <br>A velocity-tracking policy, deployed on the real robot.</h3>
+      <div class="ph media"><img class="fit" src="./assets/images/site/elixis.webp" width="2000" height="1125" loading="lazy" alt="Elixis, Addverb's humanoid robot, in white, graphite and red."></div>
+    </article>
+    <article class="hcard" aria-roledescription="slide" aria-label="3 of 6">
+      <h3>A quadruped that climbs ladders. <br>WBC, MPC and RL on Trakr.</h3>
+      <div class="ph media"><img class="fit pad" src="./assets/images/trakr2.png" width="1548" height="1040" loading="lazy" alt="The red Trakr 2.0 quadruped robot."></div>
+    </article>
+    <article class="hcard" aria-roledescription="slide" aria-label="4 of 6">
+      <h3>CPU usage from 72% to 13%. <br>An AGV stack, rewritten in pure C++.</h3>
+      <div class="ph media"><img class="fit pad" src="./assets/images/zippy_10.webp" width="800" height="480" loading="lazy" alt="A Zippy10 AGV."></div>
+    </article>
+    <article class="hcard" aria-roledescription="slide" aria-label="5 of 6">
+      <h3>76 AGVs, deployed from scratch. <br>A New Jersey site for DoorDash.</h3>
+      <div class="ph media"><img class="fit pad" src="./assets/images/zippy_40.webp" width="800" height="480" loading="lazy" alt="A Zippy40 sorting AGV with a conveyor top."></div>
+    </article>
+    <article class="hcard" aria-roledescription="slide" aria-label="6 of 6">
+      <h3>Built at home. <br>LeRobot arms and VLA models.</h3>
+      <div class="ph media photo"><img src="./assets/images/so101.jpeg" width="1024" height="768" loading="lazy" alt="Two LeRobot SO-101 arms on a desk in front of a monitor showing the assembly guide."></div>
+    </article>
+  </div>
+  <div class="pager-row">
+    <div class="pager" id="hlPager" role="group" aria-label="Choose a highlight"></div>
+    <button class="playbtn" id="hlPlay" type="button" aria-label="Pause highlights"><svg viewBox="0 0 18 18" aria-hidden="true"><path id="hlPlayIcon" d="M4 2.5h3.4v13H4zM10.6 2.5H14v13h-3.4z" fill="currentColor"/></svg></button>
+  </div>
+</section>
 
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap-copy story-head">
+    <p class="eyebrow rv">About</p>
+    <h2 class="hx rv">Hands-on in industry. <br>Rooted in research.</h2>
+    <p class="lede rv">I’ve studied robotics since day one of college. For 3+ years I’ve taken humanoids, quadrupeds, cobots and AGVs from simulation to real hardware, <b>focused on RL locomotion, whole-body tracking and model-based control.</b></p>
+  </div>
+  <div class="wrap-mid split">
+    <p class="copy rv">I hold a Master’s in Electrical Engineering and Computer Sciences (EECS), Robotics track, from <b>UC Berkeley</b>, and a Bachelor’s in Robotics from <b>Southeast University</b>.</p>
+    <p class="copy rv">I’m passionate about building <b>intelligent robotic systems that operate reliably</b> in dynamic, real-world environments.</p>
+  </div>
+  <div class="wrap logos-wrap rv">
+    <p class="logos-cap">Studied, worked and built at</p>
+    <ul class="logos">
+      <li><a href="https://www.berkeley.edu/" target="_blank" rel="noopener"><img src="./assets/images/ucb.svg" width="56" height="56" alt="UC Berkeley"></a></li>
+      <li><a href="https://www.seu.edu.cn/english/" target="_blank" rel="noopener"><img src="./assets/images/seu.png" width="56" height="56" alt="Southeast University"></a></li>
+      <li><a href="https://www.cuhk.edu.cn/en" target="_blank" rel="noopener"><img src="./assets/images/hk.png" width="71" height="56" alt="The Chinese University of Hong Kong, Shenzhen"></a></li>
+      <li><a href="https://www.dexmate.ai/" target="_blank" rel="noopener"><img src="./assets/images/dexmate.svg" width="150" height="32" alt="Dexmate"></a></li>
+      <li><a href="https://www.addverb.com" target="_blank" rel="noopener"><img src="./assets/images/addverb.png" width="143" height="40" alt="Addverb"></a></li>
+      <li><a href="https://recf.org/teams/competition/vex-ai-robotics-competition/" target="_blank" rel="noopener"><img src="./assets/images/vex.png" width="133" height="40" alt="VEX AI Robotics Competition"></a></li>
+      <li><a href="https://huggingface.co/lerobot" target="_blank" rel="noopener"><img src="./assets/images/lerobot.png" width="123" height="40" alt="LeRobot"></a></li>
+    </ul>
+  </div>
+</section>
 
+<!-- DEXMATE: legged humanoid -->
+<section class="sec" id="dexmate">
+  <div class="wrap-copy story-head">
+    <p class="eyebrow rv">Dexmate · Legged humanoid</p>
+    <h2 class="hx rv">Human motion in. <br>Robot motion out.</h2>
+    <p class="lede rv">At Dexmate, I train RL locomotion policies for a legged humanoid in Isaac Sim and deploy them sim-to-real, <b>over hundreds of rounds of hardware testing.</b></p>
+  </div>
+  <div class="wrap-mid">
+    <figure class="flow rv">
+      <figcaption class="flow-h">From a person’s motion to the robot’s.</figcaption>
+      <svg class="flow-svg h" viewBox="0 -4 1000 214" role="img" aria-label="The human-to-robot motion pipeline: capture human motion with PICO, Meta Quest or OptiTrack; retarget it with a customized algorithm; train whole-body tracking policies; deploy them on the robot. Hardware testing feeds back into training.">
+        <defs><marker id="dxAh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#86868b"/></marker></defs>
+        <path class="fl-ar" d="M893 64V24H107V60" marker-end="url(#dxAh)"/>
+        <text class="fl-lb" x="500" y="14" text-anchor="middle">hundreds of hardware rounds</text>
+        <g class="fl-nd" style="--i:0"><rect x="0" y="70" width="214" height="130" rx="20"/><text class="t" x="22" y="116">Capture</text><text class="s" x="22" y="146">PICO · Meta Quest</text><text class="s" x="22" y="168">OptiTrack</text></g>
+        <g class="fl-nd" style="--i:1"><rect x="262" y="70" width="214" height="130" rx="20"/><text class="t" x="284" y="116">Retarget</text><text class="s" x="284" y="146">customized retarget</text><text class="s" x="284" y="168">algorithm</text></g>
+        <g class="fl-nd" style="--i:2"><rect x="524" y="70" width="214" height="130" rx="20"/><text class="t" x="546" y="116">Track</text><text class="s" x="546" y="146">whole-body tracking</text><text class="s" x="546" y="168">policies</text></g>
+        <g class="fl-nd" style="--i:3"><rect x="786" y="70" width="214" height="130" rx="20"/><text class="t" x="808" y="116">Deploy</text><text class="s" x="808" y="146">sim-to-real,</text><text class="s" x="808" y="168">on the humanoid</text></g>
+        <path class="fl-ar" d="M218 135H256" marker-end="url(#dxAh)"/>
+        <path class="fl-ar" d="M480 135H518" marker-end="url(#dxAh)"/>
+        <path class="fl-ar" d="M742 135H780" marker-end="url(#dxAh)"/>
+      </svg>
+      <svg class="flow-svg v" viewBox="0 0 340 510" aria-hidden="true">
+        <defs><marker id="dxAh2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#86868b"/></marker></defs>
+        <g class="fl-nd" style="--i:0"><rect x="10" y="10" width="270" height="92" rx="20"/><text class="t" x="32" y="48">Capture</text><text class="s" x="32" y="76">PICO · Meta Quest · OptiTrack</text></g>
+        <g class="fl-nd" style="--i:1"><rect x="10" y="140" width="270" height="92" rx="20"/><text class="t" x="32" y="178">Retarget</text><text class="s" x="32" y="206">customized algorithm</text></g>
+        <g class="fl-nd" style="--i:2"><rect x="10" y="270" width="270" height="92" rx="20"/><text class="t" x="32" y="308">Track</text><text class="s" x="32" y="336">whole-body tracking policies</text></g>
+        <g class="fl-nd" style="--i:3"><rect x="10" y="400" width="270" height="92" rx="20"/><text class="t" x="32" y="438">Deploy</text><text class="s" x="32" y="466">sim-to-real, on the humanoid</text></g>
+        <path class="fl-ar" d="M145 106V134" marker-end="url(#dxAh2)"/>
+        <path class="fl-ar" d="M145 236V264" marker-end="url(#dxAh2)"/>
+        <path class="fl-ar" d="M145 366V394" marker-end="url(#dxAh2)"/>
+        <path class="fl-ar" d="M284 446H312V56H288" marker-end="url(#dxAh2)"/>
+        <text class="fl-lb" x="328" y="251" text-anchor="middle" transform="rotate(90 328 251)">hardware rounds</text>
+      </svg>
+    </figure>
+  </div>
+  <div class="wrap feat">
+    <article class="ftile rv">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="13" cy="4.5" r="2"/><path d="M11 8.5l-3 4 3 2.5-1.5 5.5M11 8.5l4 2 2.5 3M11 15l4 1.5 1 4.5"/></svg>
+      <h3>RL locomotion</h3>
+      <p>Policies trained in Isaac Sim and deployed on hardware, plus perceptive locomotion.</p>
+      <ul class="pills"><li>Velocity tracking</li><li>Decoupled velocity tracking</li><li>Running</li><li>Stance</li><li>AnyPose2AnyPose</li></ul>
+    </article>
+    <article class="ftile rv">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="5" r="2"/><circle cx="17" cy="5" r="2"/><path d="M7 8v6l-2 6M7 14l2 6M17 8v6l-2 6M17 14l2 6M10 11h4"/></svg>
+      <h3>Whole-body tracking</h3>
+      <p>Policies trained on retargeted human motion, both skill-specific and general-purpose.</p>
+      <ul class="pills"><li>Climbing</li><li>Soccer kicking</li><li>Box carrying</li><li>General-purpose</li></ul>
+    </article>
+    <article class="ftile rv">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18M7 4v3M17 4v3M12 7v5M9 12h6l-1 3h-4zM12 15v5"/></svg>
+      <h3>Safety crane</h3>
+      <p>I own the in-house overhead safety-crane system that protects the humanoid during hardware testing.</p>
+    </article>
+  </div>
+</section>
 
+<!-- VEGA: wheeled humanoid -->
+<section class="sec band clip" id="vega">
+  <div class="wrap-copy story-head">
+    <p class="eyebrow rv">Dexmate · Wheeled humanoid</p>
+    <h2 class="hx rv">Vega. <br>Sim. SysID. URDF.</h2>
+    <p class="lede rv">I built Vega’s simulation pipelines in MuJoCo and Isaac Sim, and fixed issues in the public Vega URDF. <b>With NVIDIA’s robotics team, I worked on system identification of Vega’s actuators in Isaac Sim/Lab.</b></p>
+    <p class="more rv"><a href="#viewer" class="v3d-more" data-view="vega">See Vega in 3D <span aria-hidden="true">›</span></a></p>
+  </div>
+  <div class="frame-wrap rv">
+    <div class="frame light">
+      <div class="ph media"><img class="fit" src="./assets/images/site/vega.jpg" width="1600" height="1200" loading="lazy" alt="Dexmate's Vega wheeled humanoid, rendered from its public URDF."></div>
+    </div>
+  </div>
+  <div class="wrap-mid spec rv">
+    <div><b>Sim</b><span>simulation pipelines in MuJoCo and Isaac Sim</span></div>
+    <div><b>SysID</b><span>Vega’s actuators in Isaac Sim/Lab, with NVIDIA’s robotics team</span></div>
+    <div><b>URDF</b><span>fixes to the public Vega model</span></div>
+  </div>
+</section>
 
-  <!--
-    - custom js link
-  -->
-  <script src="./assets/js/script.js"></script>
+<!-- HUMANOID -->
+<section class="sec" id="humanoid">
+  <div class="wrap-copy story-head">
+    <p class="eyebrow rv">Addverb · Humanoid</p>
+    <h2 class="hx rv">Elixis. <br>Sim to RL, end to end.</h2>
+    <p class="lede rv">I built the humanoid’s MuJoCo simulation and sim-to-sim pipeline, and its RL pipeline in MuJoCo Playground and Isaac Sim/Lab. <b>I trained a velocity-tracking locomotion policy in Isaac Gym and deployed it on the real robot.</b></p>
+    <p class="more rv"><a href="https://addverb.ai/" target="_blank" rel="noopener">Meet Elixis <span aria-hidden="true">›</span></a></p>
+  </div>
+  <div class="frame-wrap rv">
+    <div class="frame">
+      <div class="ph media"><img src="./assets/images/site/elixis.webp" width="2000" height="1125" loading="lazy" alt="Elixis, Addverb's humanoid robot, in white, graphite and red."></div>
+    </div>
+  </div>
+  <div class="wrap-mid spec rv">
+    <div><b>Sim-to-sim</b><span>MuJoCo simulation and sim-to-sim pipeline</span></div>
+    <div><b>RL pipeline</b><span>in MuJoCo Playground and Isaac Sim/Lab</span></div>
+    <div><b>On hardware</b><span>a velocity-tracking policy from Isaac Gym, on the real robot</span></div>
+  </div>
+</section>
 
-  <!--
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<!-- QUADRUPED -->
+<section class="sec band" id="quadruped">
+  <div class="wrap-copy story-head">
+    <p class="eyebrow rv">Addverb · Quadruped</p>
+    <h2 class="hx rv">Estimate. Plan. <br>Climb.</h2>
+    <p class="lede rv">I modeled Trakr and built its simulation pipelines in MuJoCo and Isaac Sim, then developed a WBC + MPC framework for motion planning and control, the low-level joint impedance controller, and an EKF state estimator fusing IMU and joint-encoder data. <b>I also trained a ladder-climbing RL policy in Isaac Gym and deployed it on hardware.</b></p>
+    <p class="more rv"><a href="https://www.linkedin.com/posts/addverb_trakr-addverbs-quadruped-ugcPost-7298287760946147329-aEnu" target="_blank" rel="noopener">See Trakr in action <span aria-hidden="true">›</span></a></p>
+  </div>
+  <div class="wrap-mid">
+    <figure class="flow rv">
+      <figcaption class="flow-h">From sensors to torques.</figcaption>
+      <svg class="flow-svg h" viewBox="0 -4 1000 214" role="img" aria-label="The control loop: sense with the IMU and joint encoders, estimate state with an Extended Kalman Filter, plan with Model Predictive Control, control with Whole-Body Control, actuate through an impedance controller. State feedback closes the loop.">
+        <defs><marker id="flAh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#86868b"/></marker></defs>
+        <path class="fl-ar" d="M916 64V24H84V60" marker-end="url(#flAh)"/>
+        <text class="fl-lb" x="500" y="14" text-anchor="middle">state feedback</text>
+        <g class="fl-nd" style="--i:0"><rect x="0" y="70" width="168" height="130" rx="20"/><text class="t" x="20" y="116">Sense</text><text class="s" x="20" y="146">IMU · joint</text><text class="s" x="20" y="168">encoders</text></g>
+        <g class="fl-nd" style="--i:1"><rect x="208" y="70" width="168" height="130" rx="20"/><text class="t" x="228" y="116">Estimate</text><text class="s" x="228" y="146">Extended</text><text class="s" x="228" y="168">Kalman Filter</text></g>
+        <g class="fl-nd" style="--i:2"><rect x="416" y="70" width="168" height="130" rx="20"/><text class="t" x="436" y="116">Plan</text><text class="s" x="436" y="146">Model Predictive</text><text class="s" x="436" y="168">Control</text></g>
+        <g class="fl-nd" style="--i:3"><rect x="624" y="70" width="168" height="130" rx="20"/><text class="t" x="644" y="116">Control</text><text class="s" x="644" y="146">Whole-Body</text><text class="s" x="644" y="168">Control</text></g>
+        <g class="fl-nd" style="--i:4"><rect x="832" y="70" width="168" height="130" rx="20"/><text class="t" x="852" y="116">Actuate</text><text class="s" x="852" y="146">Impedance</text><text class="s" x="852" y="168">controller</text></g>
+        <path class="fl-ar" d="M172 135H202" marker-end="url(#flAh)"/>
+        <path class="fl-ar" d="M380 135H410" marker-end="url(#flAh)"/>
+        <path class="fl-ar" d="M588 135H618" marker-end="url(#flAh)"/>
+        <path class="fl-ar" d="M796 135H826" marker-end="url(#flAh)"/>
+      </svg>
+      <svg class="flow-svg v" viewBox="0 0 340 640" aria-hidden="true">
+        <defs><marker id="flAh2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#86868b"/></marker></defs>
+        <g class="fl-nd" style="--i:0"><rect x="10" y="10" width="270" height="92" rx="20"/><text class="t" x="32" y="48">Sense</text><text class="s" x="32" y="76">IMU · joint encoders</text></g>
+        <g class="fl-nd" style="--i:1"><rect x="10" y="140" width="270" height="92" rx="20"/><text class="t" x="32" y="178">Estimate</text><text class="s" x="32" y="206">Extended Kalman Filter</text></g>
+        <g class="fl-nd" style="--i:2"><rect x="10" y="270" width="270" height="92" rx="20"/><text class="t" x="32" y="308">Plan</text><text class="s" x="32" y="336">Model Predictive Control</text></g>
+        <g class="fl-nd" style="--i:3"><rect x="10" y="400" width="270" height="92" rx="20"/><text class="t" x="32" y="438">Control</text><text class="s" x="32" y="466">Whole-Body Control</text></g>
+        <g class="fl-nd" style="--i:4"><rect x="10" y="530" width="270" height="92" rx="20"/><text class="t" x="32" y="568">Actuate</text><text class="s" x="32" y="596">Impedance controller</text></g>
+        <path class="fl-ar" d="M145 106V134" marker-end="url(#flAh2)"/>
+        <path class="fl-ar" d="M145 236V264" marker-end="url(#flAh2)"/>
+        <path class="fl-ar" d="M145 366V394" marker-end="url(#flAh2)"/>
+        <path class="fl-ar" d="M145 496V524" marker-end="url(#flAh2)"/>
+        <path class="fl-ar" d="M284 576H312V56H288" marker-end="url(#flAh2)"/>
+        <text class="fl-lb" x="328" y="316" text-anchor="middle" transform="rotate(90 328 316)">state feedback</text>
+      </svg>
+    </figure>
+  </div>
+  <div class="wrap-mid duo rv">
+    <a class="ph media yt duo-film" href="https://www.youtube.com/watch?v=ob8bAtx5xAo" data-yt="ob8bAtx5xAo" target="_blank" rel="noopener" aria-label="Play video: Trakr, Addverb’s quadruped for surveillance and inspection">
+      <img src="./assets/images/site/trakr_film.jpg" width="1280" height="720" loading="lazy" alt="">
+      <span class="yt-play"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 1.8v10.4L12 7z" fill="currentColor"/></svg>Watch the film</span>
+    </a>
+    <a class="ph media yt duo-short" href="https://www.youtube.com/shorts/TkwAGiCiPZw" data-yt="TkwAGiCiPZw" target="_blank" rel="noopener" aria-label="Play video: Trakr climbing, in Isaac Gym simulation and on hardware">
+      <img src="./assets/images/site/trakr_climb.jpg" width="720" height="1280" loading="lazy" alt="">
+      <span class="yt-play"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 1.8v10.4L12 7z" fill="currentColor"/></svg>Climbing, sim to real</span>
+    </a>
+  </div>
+</section>
+
+<!-- COBOT -->
+<section class="sec" id="cobot">
+  <div class="wrap-copy story-head">
+    <p class="eyebrow rv">Addverb · Cobot</p>
+    <h2 class="hx rv">Syncro, in NVIDIA’s <br>Isaac Sim library.</h2>
+    <p class="lede rv">I developed MPC for the Syncro cobot with OCS2 and Pinocchio, and built its Isaac Sim pipeline for vision-language-action (VLA) model development. <b>I created, and maintain, the USD models of two cobots in NVIDIA’s official Isaac Sim robot asset library.</b></p>
+    <p class="more rv"><a href="#viewer" class="v3d-more" data-view="syncro">See Syncro in 3D <span aria-hidden="true">›</span></a></p>
+  </div>
+  <div class="wrap render rv">
+    <div class="ph media"><img class="fit pad" src="./assets/images/syncro.webp" width="2560" height="1598" loading="lazy" alt="Addverb's white Syncro collaborative robot arm."></div>
+  </div>
+  <div class="wrap-mid spec rv">
+    <div><b>MPC</b><span>built with OCS2 and Pinocchio</span></div>
+    <div><b>2</b><span>cobot USD models in Isaac Sim’s robot asset library</span></div>
+    <div><b>VLA</b><span>an Isaac Sim pipeline for model development</span></div>
+  </div>
+</section>
+
+<!-- AGV -->
+<section class="sec band clip" id="agv">
+  <div class="wrap-copy story-head">
+    <p class="eyebrow rv">Addverb · AGV</p>
+    <h2 class="hx rv">72% to 13%.</h2>
+    <p class="lede rv">I rewrote Zippy’s ROS stack as a multithreaded pure-C++ stack, built a control pipeline for curved trajectories at 90° turns, and implemented a new EKF fusing wheel odometry and IMU data for more robust localization. <b>CPU usage on production platforms fell from 72% to 13%, and turn time by a third.</b></p>
+    <p class="more rv"><a href="https://addverb.com/robotic-sorter/" target="_blank" rel="noopener">See the robotic sorter <span aria-hidden="true">›</span></a></p>
+  </div>
+  <div class="wrap-mid film rv">
+    <a class="ph media yt" href="https://www.youtube.com/watch?v=C_nV-SDhSKU" data-yt="C_nV-SDhSKU" target="_blank" rel="noopener" aria-label="Play video: Addverb’s robotic sorter, a fleet of Zippy AGVs sorting parcels">
+      <img src="./assets/images/site/zippy_film.jpg" width="1280" height="720" loading="lazy" alt="">
+      <span class="yt-play"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3.5 1.8v10.4L12 7z" fill="currentColor"/></svg>Watch the sorter</span>
+    </a>
+  </div>
+  <div class="wrap"><h3 class="sub-head rv">By the numbers.</h3></div>
+  <div class="track mtrack" id="agvTrack">
+    <article class="wtile">
+      <h4 class="k">Multithreaded C++ ROS stack</h4>
+      <span class="v">13%</span>
+      <p><b>CPU usage</b> on production platforms, down from 72% before the rewrite.</p>
+      <div class="bars" role="img" aria-label="CPU usage: 72% before the rewrite, 13% after.">
+        <p class="bars-h">CPU usage</p>
+        <div class="bar-row"><span class="bar-k">Before</span><span class="bar-t"><i style="width:72%"></i><b>72%</b></span></div>
+        <div class="bar-row on"><span class="bar-k">After</span><span class="bar-t"><i style="width:13%"></i><b>13%</b></span></div>
+      </div>
+    </article>
+    <article class="wtile">
+      <h4 class="k">Curved-trajectory control</h4>
+      <span class="v">−⅓</span>
+      <p><b>turn time</b> at 90° turns.</p>
+      <div class="bars" role="img" aria-label="Relative time per 90 degree turn: 100% before, 67% with curved-trajectory control.">
+        <p class="bars-h">Time per 90° turn, relative</p>
+        <div class="bar-row"><span class="bar-k">Before</span><span class="bar-t"><i style="width:100%"></i><b>100%</b></span></div>
+        <div class="bar-row on"><span class="bar-k">After</span><span class="bar-t"><i style="width:66.7%"></i><b>67%</b></span></div>
+      </div>
+    </article>
+    <article class="wtile">
+      <h4 class="k">One integrated stack</h4>
+      <span class="v">7</span>
+      <p><b>subsystems</b> brought into the rewritten C++ stack.</p>
+      <ul class="pills">
+        <li>Motor control</li><li>BMS</li><li>FMS client</li><li>IMU</li><li>Barcode scanner</li><li>EKF</li><li>PID controller</li>
+      </ul>
+    </article>
+    <article class="wtile">
+      <h4 class="k">Simulated first</h4>
+      <span class="v">3</span>
+      <p><b>algorithms</b> prototyped in MATLAB/Simulink before they reached the robot.</p>
+      <ul class="pills">
+        <li>Extended Kalman Filter</li><li>Pure Pursuit controller</li><li>Bezier curve path planner</li>
+      </ul>
+    </article>
+    <article class="wtile">
+      <h4 class="k">Voice fleet management</h4>
+      <span class="v">LLM</span>
+      <p><b>voice software</b> for managing the robot fleet, built with Intel and Supermicro.</p>
+      <a class="wlink" href="https://www.linkedin.com/posts/intel-corporation_ai-agv-intel-activity-7274317401402306561-LeBI" target="_blank" rel="noopener">See the Intel post <span aria-hidden="true">›</span></a>
+    </article>
+  </div>
+  <div class="wrap arrows" data-for="agvTrack">
+    <button class="arrow" type="button" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="arrow" type="button" data-dir="1" aria-label="Next"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+</section>
+
+<!-- DEPLOYMENTS -->
+<section class="sec" id="deployments">
+  <div class="wrap-copy story-head">
+    <p class="eyebrow rv">Robot deployment and customer support</p>
+    <h2 class="hx rv">From the lab <br>to the warehouse floor.</h2>
+    <p class="lede rv">On-site work with Addverb’s customers, <b>backed by extensive hands-on robot experience.</b></p>
+  </div>
+  <div class="wrap dgrid">
+    <article class="dcard rv">
+      <p class="who">Addverb ×</p>
+      <h3>DoorDash</h3>
+      <span class="v">76</span>
+      <p><b>AGVs</b> at a New Jersey site, deployed from scratch.</p>
+      <a href="https://www.linkedin.com/posts/addverb_new-site-goes-live-in-new-jersey-activity-7315321799947210753" target="_blank" rel="noopener">Read on LinkedIn <span aria-hidden="true">›</span></a>
+    </article>
+    <article class="dcard rv">
+      <p class="who">Addverb ×</p>
+      <h3>Purdue University</h3>
+      <span class="v">3</span>
+      <p><b>robots set up</b>: 2 AMRs and 1 Multi-Carton Picking Robot.</p>
+      <div class="dlinks">
+        <a href="https://www.linkedin.com/posts/addverb_veloce-multi-carton-picking-robot-activity-7221839430146306049" target="_blank" rel="noopener">Read on LinkedIn <span aria-hidden="true">›</span></a>
+        <a href="https://www.youtube.com/watch?v=oVx6tmtrFtk" target="_blank" rel="noopener">Watch on YouTube <span aria-hidden="true">›</span></a>
+      </div>
+    </article>
+    <article class="dcard rv">
+      <p class="who">Addverb ×</p>
+      <h3>DHL</h3>
+      <span class="v">56</span>
+      <p><b>AGVs</b> in a deployment I supported on software.</p>
+      <div class="dlinks">
+        <a href="https://www.linkedin.com/posts/addverb_addverb-i-dhl-activity-7171458005744431104" target="_blank" rel="noopener">Read on LinkedIn <span aria-hidden="true">›</span></a>
+        <a href="https://www.youtube.com/watch?v=ABwkeknxFLc" target="_blank" rel="noopener">Watch on YouTube <span aria-hidden="true">›</span></a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 3D VIEWER: each robot is its URDF, with decimated meshes, rendered live -->
+<section class="look" id="viewer">
+  <div class="look-band">
+    <div class="wrap">
+      <h2 class="hl-head rv">Take a closer look.</h2>
+      <p class="look-sub rv">Live URDF models, in your browser. Drag to orbit, scroll or pinch to zoom.</p>
+    </div>
+  </div>
+  <div class="look-panel">
+    <div class="viewer">
+      <div class="vw-side">
+        <div class="chips" id="vwChips" role="group" aria-label="Robot model">
+          <div class="chip" data-robot="vega" data-urdf="./assets/robots/vega/vega.urdf" data-open>
+            <button type="button" aria-pressed="true"><span class="ic"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>Vega</button>
+            <p><b>Dexmate’s wheeled humanoid.</b> From <a href="https://github.com/dexmate-ai/dexmate-urdf" target="_blank" rel="noopener">dexmate-ai/dexmate-urdf</a>.</p>
+          </div>
+          <div class="chip" data-robot="elix" data-urdf="./assets/robots/elix/elix.urdf">
+            <button type="button" aria-pressed="false"><span class="ic"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>Elixis</button>
+            <p><b>Addverb’s humanoid.</b> From <a href="https://github.com/HumanoidAddverb/elix_gym" target="_blank" rel="noopener">HumanoidAddverb/elix_gym</a>.</p>
+          </div>
+          <div class="chip" data-robot="trakr" data-urdf="./assets/robots/trakr/trakr.urdf">
+            <button type="button" aria-pressed="false"><span class="ic"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>Trakr</button>
+            <p><b>Addverb’s quadruped.</b> From <a href="https://github.com/HumanoidAddverb/trakr_legged_rl" target="_blank" rel="noopener">HumanoidAddverb/trakr_legged_rl</a>.</p>
+          </div>
+          <div class="chip" data-robot="syncro" data-urdf="./assets/robots/syncro/syncro.urdf">
+            <button type="button" aria-pressed="false"><span class="ic"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>Syncro</button>
+            <p><b>Addverb’s collaborative arm.</b> From <a href="https://github.com/HumanoidAddverb/pyroki_framework" target="_blank" rel="noopener">HumanoidAddverb/pyroki_framework</a>.</p>
+          </div>
+          <div class="chip" data-robot="so101" data-urdf="./assets/robots/so101/so101.urdf">
+            <button type="button" aria-pressed="false"><span class="ic"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>SO-101</button>
+            <p><b>The LeRobot arm I build at home.</b> From <a href="https://github.com/TheRobotStudio/SO-ARM100" target="_blank" rel="noopener">TheRobotStudio/SO-ARM100</a>.</p>
+          </div>
+          <div class="chip" data-robot="mycobot" data-urdf="./assets/robots/mycobot/mycobot.urdf">
+            <button type="button" aria-pressed="false"><span class="ic"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>myCobot</button>
+            <p><b>Elephant Robotics’ myCobot 280.</b> From <a href="https://github.com/elephantrobotics/mycobot_ros" target="_blank" rel="noopener">elephantrobotics/mycobot_ros</a>.</p>
+          </div>
+          <div class="chip" data-robot="turtlebot3" data-urdf="./assets/robots/turtlebot3/turtlebot3.urdf">
+            <button type="button" aria-pressed="false"><span class="ic"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>TurtleBot3</button>
+            <p><b>TurtleBot3 Burger.</b> From <a href="https://github.com/ROBOTIS-GIT/turtlebot3" target="_blank" rel="noopener">ROBOTIS-GIT/turtlebot3</a>.</p>
+          </div>
+        </div>
+        <p class="vw-desc" id="vwDesc" aria-live="polite"></p>
+      </div>
+      <div class="stage rv">
+        <div class="vw-canvas" id="vwCanvas">
+          <p class="vw-status" id="vwStatus">Loading the 3D viewer</p>
+        </div>
+        <div class="stage-meta">
+          <span class="stage-read" id="vwRead">URDF</span>
+          <button class="vw-play" id="vwPlay" type="button" aria-label="Pause the joint animation"><svg viewBox="0 0 14 14" aria-hidden="true"><path id="vwPlayIcon" d="M3 1.5h3v11H3zM8 1.5h3v11H8z" fill="currentColor"/></svg><span>Pause joints</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROBOTS -->
+<section class="sec" id="robots">
+  <div class="wrap">
+    <div class="headrow">
+      <h2 class="hl-head rv">Robots I’ve worked on.</h2>
+      <div class="fseg rv" role="group" aria-label="Filter robots by type">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="legged" aria-pressed="false">Legged</button>
+        <button type="button" data-f="wheeled" aria-pressed="false">Wheeled</button>
+        <button type="button" data-f="arm" aria-pressed="false">Arms</button>
+      </div>
+    </div>
+    <p class="sr" id="rCount" aria-live="polite"></p>
+    <ul class="rgrid" id="rGrid">
+      <li class="rcard" data-cat="wheeled"><a href="https://www.dexmate.ai/vega" target="_blank" rel="noopener">
+        <div class="ph media"><img src="./assets/images/site/vega.jpg" width="1600" height="1200" loading="lazy" alt=""></div>
+        <h3>Vega (wheeled humanoid)</h3><p>2026 · Dexmate, United States</p><span class="tag">Development</span></a><a class="v3d" href="#viewer" data-view="vega">View in 3D <span aria-hidden="true">›</span></a></li>
+      <li class="rcard" data-cat="legged"><a href="https://addverb.ai/" target="_blank" rel="noopener">
+        <div class="ph media"><img src="./assets/images/site/elixis.webp" width="2000" height="1125" loading="lazy" alt=""></div>
+        <h3>Elixis (humanoid)</h3><p>2025 · Addverb, United States</p><span class="tag">Development</span></a><a class="v3d" href="#viewer" data-view="elix">View in 3D <span aria-hidden="true">›</span></a></li>
+      <li class="rcard" data-cat="legged"><a href="https://addverb.com/press-release/addverb-launches-new-warehouse-robots-trakr-2-0-brisk-and-hoca-at-logimat-india-2025/" target="_blank" rel="noopener">
+        <div class="ph media"><img class="fit pad mul" src="./assets/images/trakr2.png" width="1548" height="1040" loading="lazy" alt=""></div>
+        <h3>Trakr 2.0</h3><p>2025 · Addverb, United States</p><span class="tag">Development</span></a></li>
+      <li class="rcard" data-cat="legged"><a href="https://addverb.com/trakr-indias-homegrown-robotic-dog-quadruped/" target="_blank" rel="noopener">
+        <div class="ph media"><img src="./assets/images/trakr.webp" width="1024" height="683" loading="lazy" alt=""></div>
+        <h3>Trakr</h3><p>2024 – 2025 · Addverb, United States</p><span class="tag">Development</span></a><a class="v3d" href="#viewer" data-view="trakr">View in 3D <span aria-hidden="true">›</span></a></li>
+      <li class="rcard" data-cat="wheeled"><a href="https://addverb.com/robotic-sorter/" target="_blank" rel="noopener">
+        <div class="ph media"><img class="fit pad" src="./assets/images/zippy_40.webp" width="800" height="480" loading="lazy" alt=""></div>
+        <h3>Zippy40 (AGV)</h3><p>2024 – 2025 · Addverb × DHL and Addverb × DoorDash, United States</p><span class="tag">Deployment and support</span></a><a class="rlink" href="https://www.youtube.com/watch?v=C_nV-SDhSKU" target="_blank" rel="noopener">Watch on YouTube <span aria-hidden="true">›</span></a></li>
+      <li class="rcard" data-cat="arm"><a href="https://addverb.com/products/cobot/" target="_blank" rel="noopener">
+        <div class="ph media"><img class="fit pad" src="./assets/images/syncro.webp" width="2560" height="1598" loading="lazy" alt=""></div>
+        <h3>Syncro (Cobot)</h3><p>2024 · Addverb, United States</p><span class="tag">Development</span></a><a class="v3d" href="#viewer" data-view="syncro">View in 3D <span aria-hidden="true">›</span></a></li>
+      <li class="rcard" data-cat="wheeled"><a href="https://addverb.com/autonomous-mobile-robot/" target="_blank" rel="noopener">
+        <div class="ph media"><img class="fit pad" src="./assets/images/dynamo_200.webp" width="800" height="480" loading="lazy" alt=""></div>
+        <h3>Dynamo (AMR)</h3><p>2024 · Addverb × Purdue University, United States</p><span class="tag">Deployment</span></a><a class="rlink" href="https://www.youtube.com/watch?v=oVx6tmtrFtk" target="_blank" rel="noopener">Watch on YouTube <span aria-hidden="true">›</span></a></li>
+      <li class="rcard" data-cat="wheeled"><a href="https://addverb.com/multi-carton-picking-robot/" target="_blank" rel="noopener">
+        <div class="ph media"><img class="fit pad" src="./assets/images/veloce.webp" width="800" height="480" loading="lazy" alt=""></div>
+        <h3>Veloce (Multi-Carton Picking Robot)</h3><p>2024 · Addverb × Purdue University, United States</p><span class="tag">Deployment</span></a></li>
+      <li class="rcard" data-cat="arm"><a href="https://www.elephantrobotics.com/en/mycobot-en/" target="_blank" rel="noopener">
+        <div class="ph media"><img src="./assets/images/mycobot.png" width="1270" height="1464" loading="lazy" alt=""></div>
+        <h3>myCobot 280</h3><p>2024 · Addverb, United States</p><span class="tag">Development</span></a><a class="v3d" href="#viewer" data-view="mycobot">View in 3D <span aria-hidden="true">›</span></a></li>
+      <li class="rcard" data-cat="wheeled"><a href="https://addverb.com/robotic-sorter/" target="_blank" rel="noopener">
+        <div class="ph media"><img class="fit pad" src="./assets/images/zippy_10.webp" width="800" height="480" loading="lazy" alt=""></div>
+        <h3>Zippy10 (AGV)</h3><p>2023 – 2024 · Addverb, United States</p><span class="tag">Development</span></a></li>
+      <li class="rcard" data-cat="legged"><a href="https://www.mi.com/cyberdog/gallery" target="_blank" rel="noopener">
+        <div class="ph media"><img src="./assets/images/cyberdog.jpeg" width="800" height="600" loading="lazy" alt=""></div>
+        <h3>Xiaomi CyberDog</h3><p>2022 · Southeast University, China</p><span class="tag">Development</span></a></li>
+      <li class="rcard" data-cat="arm"><a href="https://en.estun.com/?list_148/1308.html" target="_blank" rel="noopener">
+        <div class="ph media"><img src="./assets/images/estun.png" width="1198" height="998" loading="lazy" alt=""></div>
+        <h3>ESTUN SCARA</h3><p>2022 · Southeast University, China</p><span class="tag">Development</span></a></li>
+      <li class="rcard" data-cat="wheeled"><a href="https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/" target="_blank" rel="noopener">
+        <div class="ph media"><img src="./assets/images/turtlebot.png" width="1066" height="752" loading="lazy" alt=""></div>
+        <h3>Turtlebot3</h3><p>2021 – 2022 · Southeast University, China</p><span class="tag">Development</span></a><a class="v3d" href="#viewer" data-view="turtlebot3">View in 3D <span aria-hidden="true">›</span></a></li>
+      <li class="rcard" data-cat="wheeled"><a href="https://robotsguide.com/robots/pr2" target="_blank" rel="noopener">
+        <div class="ph media"><img src="./assets/images/pr2.png" width="1280" height="720" loading="lazy" alt=""></div>
+        <h3>PR2</h3><p>2021 · Southeast University, China</p><span class="tag">Development</span></a></li>
+      <li class="rcard" data-cat="arm"><a href="https://www.efort.com.cn/web/upload/2025/05/06/17465024973829ub3ra.pdf" target="_blank" rel="noopener">
+        <div class="ph media"><img src="./assets/images/robot_arm.png" width="1044" height="854" loading="lazy" alt=""></div>
+        <h3>EFORT ER3A-C60</h3><p>2021 · Southeast University, China</p><span class="tag">Development</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- PERSONAL -->
+<section class="sec band clip" id="personal">
+  <div class="wrap-copy story-head">
+    <p class="eyebrow rv">Personal development</p>
+    <h2 class="hx rv">Built at home. <br>Coached to compete.</h2>
+    <p class="lede rv">I build custom LeRobot robotic arms and explore advanced Vision-Language-Action (VLA) models for embodied AI. <b>I also coach teams for VEX AI Robotics competitions.</b></p>
+  </div>
+  <div class="track ptrack" id="pTrack">
+    <article class="pcard">
+      <div class="ph media"><img src="./assets/images/so101.jpeg" width="1024" height="768" loading="lazy" alt="Two LeRobot SO-101 arms on a desk."></div>
+      <h3>LeRobot SO-101/100</h3><p>2024 – 2025 · Robot arm</p><a class="v3d" href="#viewer" data-view="so101">View in 3D <span aria-hidden="true">›</span></a>
+    </article>
+    <article class="pcard">
+      <div class="ph media"><img src="./assets/images/vex.jpeg" width="768" height="1024" loading="lazy" alt="A custom VEX AI competition robot built from aluminium channel."></div>
+      <h3>VEX AI Customized Robot</h3><p>2024 – 2025 · Wheeled robot</p>
+    </article>
+    <article class="pcard">
+      <div class="ph media"><img src="./assets/images/vexiq.png" width="652" height="450" loading="lazy" alt="A custom VEX IQ robot on a competition field."></div>
+      <h3>VEX IQ Customized Robot</h3><p>2024 · Wheeled robot</p>
+    </article>
+    <article class="pcard">
+      <div class="ph media"><img src="./assets/images/jetbot.png" width="1120" height="908" loading="lazy" alt="A Jetbot built around an NVIDIA Jetson board, with a camera and antennas."></div>
+      <h3>Jetbot</h3><p>2023 · Wheeled robot</p>
+    </article>
+  </div>
+  <div class="wrap arrows" data-for="pTrack">
+    <button class="arrow" type="button" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="arrow" type="button" data-dir="1" aria-label="Next"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="sec" id="experience">
+  <div class="wrap-mid">
+    <p class="eyebrow rv">Resume</p>
+    <h2 class="hl-head rv">Experience.</h2>
+    <ol class="xp">
+      <li class="rv">
+        <span class="xp-d">Jun 2026 – Present</span>
+        <div><h3>Robotics Software Engineer</h3><p>Dexmate Inc. · Fremont, CA</p><p class="xp-t">Legged humanoid · Vega wheeled humanoid</p></div>
+      </li>
+      <li class="rv">
+        <span class="xp-d">Mar 2024 – Jun 2026</span>
+        <div><h3>Robotics Software Engineer, Advanced Robotics Team</h3><p>Addverb Technologies USA Inc. · Fremont, CA</p><p class="xp-t">Elixis humanoid · Trakr quadruped · Syncro cobot</p></div>
+      </li>
+      <li class="rv">
+        <span class="xp-d">May 2023 – Feb 2024</span>
+        <div><h3>Robotics Software Engineer Intern, Mobile Robotics Team</h3><p>Addverb Technologies USA Inc. · Fremont, CA</p><p class="xp-t">Zippy AGV · deployments for DoorDash and DHL</p></div>
+      </li>
+      <li class="rv">
+        <span class="xp-d">Feb 2022 – Mar 2022</span>
+        <div><h3>Deep Learning / Computer Vision Engineer</h3><p>Jia Kang Zhong Zhi Technology Co., Ltd. · Internship</p></div>
+      </li>
+      <li class="rv">
+        <span class="xp-d">Jul 2021 – Sep 2021</span>
+        <div><h3>Research Assistant</h3><p>The Chinese University of Hong Kong, Shenzhen · Full-time</p></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="sec band" id="education">
+  <div class="wrap-mid">
+    <h2 class="hl-head rv">Education.</h2>
+    <div class="ctable rv">
+      <div class="ccols">
+        <div><img src="./assets/images/ucb.svg" width="56" height="56" alt=""><h3>UC Berkeley</h3><p>Aug 2022 – May 2023</p></div>
+        <div><img src="./assets/images/seu.png" width="56" height="56" alt=""><h3>Southeast University</h3><p>Jul 2018 – Jul 2022</p></div>
+      </div>
+      <div class="crow"><h4>Degree</h4><div class="ccols">
+        <div><b>M.Eng.</b><span>Electrical Engineering &amp; Computer Sciences</span><span>Robotics track</span></div>
+        <div><b>B.Eng.</b><span>Robotics</span><span>China’s #1 robotics program</span></div>
+      </div></div>
+      <div class="crow"><h4>GPA</h4><div class="ccols">
+        <div><b class="num">3.9</b><span>out of 4.0</span></div>
+        <div><b class="num">3.88</b><span>out of 4.0</span><span>Ranked 2 of 37</span></div>
+      </div></div>
+      <div class="crow"><h4>Scholarship</h4><div class="ccols">
+        <div><b>Fung Institute Scholarship</b></div>
+        <div><b>President’s Scholarship</b><span>Top 1%</span></div>
+      </div></div>
+      <div class="crow"><h4>Lab</h4><div class="ccols">
+        <div><b>Barsky Lab</b><span>Prof. Brian A. Barsky</span></div>
+        <div><b>OneCo Lab</b><span>Prof. Wankou Yang</span></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="sec" id="skills">
+  <div class="wrap-mid">
+    <h2 class="hl-head rv">Skills.</h2>
+    <div class="sgrid">
+      <div class="stile rv">
+        <h3>Robot learning</h3>
+        <ul class="pills"><li>RL locomotion</li><li>Whole-body tracking</li><li>Retargeting</li></ul>
+        <ul class="pills tools"><li>Holosoma</li><li>BFM-Zero</li><li>MimicLite</li><li>PHP</li><li>GMR</li><li>OmniRetarget</li><li>PyTorch</li></ul>
+      </div>
+      <div class="stile rv">
+        <h3>Simulation</h3>
+        <ul class="pills"><li>Isaac Sim / Isaac Lab</li><li>Isaac Gym</li><li>MuJoCo</li><li>MuJoCo Playground</li><li>Gazebo</li><li>Webots</li></ul>
+        <ul class="pills tools"><li>URDF</li><li>MJCF</li><li>USD</li></ul>
+      </div>
+      <div class="stile rv">
+        <h3>Control</h3>
+        <ul class="pills"><li>Model Predictive Control</li><li>Whole-Body Control</li><li>Impedance control</li><li>EKF</li><li>Pure Pursuit</li></ul>
+        <ul class="pills tools"><li>OCS2</li><li>Pinocchio</li></ul>
+      </div>
+      <div class="stile rv">
+        <h3>Software and tools</h3>
+        <ul class="pills"><li>C++ (multithreading)</li><li>Python</li><li>ROS 1/2</li><li>MATLAB/Simulink</li></ul>
+        <ul class="pills tools"><li>OptiTrack</li><li>PICO</li><li>Meta Quest motion capture</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec band contact" id="contact">
+  <div class="wrap">
+    <p class="eyebrow rv">Contact</p>
+    <h2 class="rv">Let’s talk robots.</h2>
+    <p class="authors rv"><span>Yifei Lyu</span></p>
+    <p class="affil rv">Robotics Software Engineer, Dexmate<br>Fremont, California, USA</p>
+    <div class="btns rv"><a class="btn solid" href="mailto:yifei_lyu@berkeley.edu">Email</a><a class="btn" href="https://www.linkedin.com/in/yifeilyu-berkeley/" target="_blank" rel="noopener">LinkedIn</a></div>
+    <div class="bib rv">
+      <div class="bib-head"><span>Details</span><button class="copybtn" id="copyEmail" type="button" data-copy="yifei_lyu@berkeley.edu">Copy email</button></div>
+      <dl class="kv">
+        <dt>Email</dt><dd><a href="mailto:yifei_lyu@berkeley.edu">yifei_lyu@berkeley.edu</a></dd>
+        <dt>Phone</dt><dd><a href="tel:+15105010104">+1 (510) 501-0104</a></dd>
+        <dt>Location</dt><dd>Fremont, California, USA</dd>
+        <dt>Birthday</dt><dd><time datetime="1999-12">December 1999</time></dd>
+        <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/yifeilyu-berkeley/" target="_blank" rel="noopener">linkedin.com/in/yifeilyu-berkeley</a></dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>© 2026 Yifei Lyu</p>
+    <a href="#top">Back to top <span aria-hidden="true">›</span></a>
+  </div>
+</footer>
 
 </body>
-
 </html>
