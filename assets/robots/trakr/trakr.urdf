@@ -1,0 +1,305 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="trakr">
+ <link name="base">
+  <visual>
+   <origin xyz="0 0.008 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/base_link.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.75294 0.75294 0.75294 1" />
+   </material>
+  </visual>
+ </link>
+ <link name="head">
+    </link>
+ <joint name="neck" type="fixed">
+  <origin xyz="0 0.351 0.02" rpy="0 0 0" />
+  <parent link="base" />
+  <child link="head" />
+ </joint>
+ <link name="FL_hip">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/FL_hip.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.50196 0.50196 1 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="FL_adduction" type="revolute">
+  <origin xyz="-0.055 0.171 0.057" rpy="1.57079632 0 3.14159265" />
+  <parent link="base" />
+  <child link="FL_hip" />
+  <axis xyz="0 0 1" />
+  <limit effort="30" velocity="10" lower="-0.785" upper="0.785" />
+ </joint>
+ <link name="FL_thigh">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/FL_thigh.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.75294 0.75294 0.75294 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="FL_hip" type="revolute">
+  <origin xyz="0.09 0 0.0565" rpy="-1.57079632 0.80983 -1.57079632" />
+  <parent link="FL_hip" />
+  <child link="FL_thigh" />
+  <axis xyz="0 0 1" />
+  <limit effort="30" velocity="10" lower="-1.0" upper="0.8" />
+ </joint>
+ <link name="FL_shank">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/FL_shank.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.75294 0.75294 0.75294 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="FL_knee" type="revolute">
+  <origin xyz="0.20077 0 0" rpy="0 0 -1.57079632" />
+  <parent link="FL_thigh" />
+  <child link="FL_shank" />
+  <axis xyz="0 0 1" />
+  <limit effort="30" velocity="10" lower="-1.10" upper="0.70" />
+ </joint>
+ <link name="FL_toe">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/FL_toe.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.29804 0.29804 0.29804 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="FL_toe" type="fixed" dont_collapse="true">
+  <origin xyz="0.20917 0 0" rpy="3.14159265 1.57079632 0" />
+  <parent link="FL_shank" />
+  <child link="FL_toe" />
+  <axis xyz="0 0 0" />
+ </joint>
+ <link name="FR_hip">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/FR_hip.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.50196 0.50196 1 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="FR_adduction" type="revolute">
+  <origin xyz="0.055 0.171 0.057" rpy="-1.57079632 0 3.14159265" />
+  <parent link="base" />
+  <child link="FR_hip" />
+  <axis xyz="0 0 -1" />
+  <limit effort="30" velocity="10" lower="-0.785" upper="0.785" />
+ </joint>
+ <link name="FR_thigh">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/FR_thigh.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.75294 0.75294 0.75294 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="FR_hip" type="revolute">
+  <origin xyz="-0.09 0 -0.0565" rpy="1.57079632 -0.80983 1.57079632" />
+  <parent link="FR_hip" />
+  <child link="FR_thigh" />
+  <axis xyz="0 0 1" />
+  <limit effort="30" velocity="10" lower="-1.0" upper="0.8" />
+ </joint>
+ <link name="FR_shank">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/FR_shank.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.75294 0.75294 0.75294 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="FR_knee" type="revolute">
+  <origin xyz="0.20077 0 0" rpy="0 0 -1.57079632" />
+  <parent link="FR_thigh" />
+  <child link="FR_shank" />
+  <axis xyz="0 0 1" />
+  <limit effort="30" velocity="10" lower="-1.10" upper="0.70" />
+ </joint>
+ <link name="FR_toe">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/FR_toe.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.29804 0.29804 0.29804 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="FR_toe" type="fixed" dont_collapse="true">
+  <origin xyz="0.20917 0 0" rpy="3.14159265 1.57079632 0" />
+  <parent link="FR_shank" />
+  <child link="FR_toe" />
+  <axis xyz="0 0 0" />
+ </joint>
+ <link name="RL_hip">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/RL_hip.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.50196 0.50196 1 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="RL_adduction" type="revolute">
+  <origin xyz="-0.055 -0.171 0.057" rpy="1.57079632 0 3.14159265" />
+  <parent link="base" />
+  <child link="RL_hip" />
+  <axis xyz="0 0 1" />
+  <limit effort="30" velocity="10" lower="-0.785" upper="0.785" />
+ </joint>
+ <link name="RL_thigh">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/RL_thigh.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.75294 0.75294 0.75294 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="RL_hip" type="revolute">
+  <origin xyz="0.09 0 -0.0565" rpy="-1.57079632 0.80983 -1.57079632" />
+  <parent link="RL_hip" />
+  <child link="RL_thigh" />
+  <axis xyz="0 0 1" />
+  <limit effort="30" velocity="10" lower="-1.0" upper="0.8" />
+ </joint>
+ <link name="RL_shank">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/RL_shank.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.75294 0.75294 0.75294 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="RL_knee" type="revolute">
+  <origin xyz="0.20077 0 0" rpy="0 0 -1.57079632" />
+  <parent link="RL_thigh" />
+  <child link="RL_shank" />
+  <axis xyz="0 0 1" />
+  <limit effort="30" velocity="10" lower="-1.10" upper="0.70" />
+ </joint>
+ <link name="RL_toe">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/RL_toe.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.29804 0.29804 0.29804 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="RL_toe" type="fixed" dont_collapse="true">
+  <origin xyz="0.20917 0 0" rpy="3.14159265 1.57079632 0" />
+  <parent link="RL_shank" />
+  <child link="RL_toe" />
+  <axis xyz="0 0 0" />
+ </joint>
+ <link name="RR_hip">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/RR_hip.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.50196 0.50196 1 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="RR_adduction" type="revolute">
+  <origin xyz="0.055 -0.171 0.057" rpy="-1.57079632 0 3.14159265" />
+  <parent link="base" />
+  <child link="RR_hip" />
+  <axis xyz="0 0 -1" />
+  <limit effort="30" velocity="10" lower="-0.785" upper="0.785" />
+ </joint>
+ <link name="RR_thigh">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/RR_thigh.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.75294 0.75294 0.75294 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="RR_hip" type="revolute">
+  <origin xyz="-0.09 0 0.0565" rpy="1.57079632 -0.80983 1.57079632" />
+  <parent link="RR_hip" />
+  <child link="RR_thigh" />
+  <axis xyz="0 0 1" />
+  <limit effort="30" velocity="10" lower="-1.0" upper="0.8" />
+ </joint>
+ <link name="RR_shank">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/RR_shank.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.75294 0.75294 0.75294 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="RR_knee" type="revolute">
+  <origin xyz="0.20077 0 0" rpy="0 0 -1.57079632" />
+  <parent link="RR_thigh" />
+  <child link="RR_shank" />
+  <axis xyz="0 0 1" />
+  <limit effort="30" velocity="10" lower="-1.10" upper="0.70" />
+ </joint>
+ <link name="RR_toe">
+  <visual>
+   <origin xyz="0 0 0" rpy="0 0 0" />
+   <geometry>
+    <mesh filename="meshes/RR_toe.glb" />
+   </geometry>
+   <material name="">
+    <color rgba="0.29804 0.29804 0.29804 1" />
+   </material>
+  </visual>
+ </link>
+ <joint name="RR_toe" type="fixed" dont_collapse="true">
+  <origin xyz="0.20917 0 0" rpy="3.14159265 1.57079632 0" />
+  <parent link="RR_shank" />
+  <child link="RR_toe" />
+  <axis xyz="0 0 0" />
+ </joint>
+</robot>

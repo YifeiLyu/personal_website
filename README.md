@@ -1,46 +1,38 @@
-# vCard - Personal portfolio
+# Yifei Lyu — personal website
 
-https://ionic.io/ionicons
+A single-page portfolio in plain HTML, CSS and JavaScript, styled after Apple-style product pages:
+a floating nav pill, eyebrow + headline + lede story sections, carousels, metric tiles, and a live
+3D viewer that renders robots straight from their URDFs.
 
-![GitHub repo size](https://img.shields.io/github/repo-size/codewithsadee/vcard-personal-portfolio)
-![GitHub stars](https://img.shields.io/github/stars/codewithsadee/vcard-personal-portfolio?style=social)
-![GitHub forks](https://img.shields.io/github/forks/codewithsadee/vcard-personal-portfolio?style=social)
-[![Twitter Follow](https://img.shields.io/twitter/follow/codewithsadee_?style=social)](https://twitter.com/intent/follow?screen_name=codewithsadee_)
-[![YouTube Video Views](https://img.shields.io/youtube/views/SoxmIlgf2zM?style=social)](https://youtu.be/SoxmIlgf2zM)
-
-vCard is a fully responsive personal portfolio website, responsive for all devices, built using HTML, CSS, and JavaScript.
-
-## Demo
-
-![vCard Desktop Demo](./website-demo-image/desktop.png "Desktop Demo")
-![vCard Mobile Demo](./website-demo-image/mobile.png "Mobile Demo")
-
-## Prerequisites
-
-Before you begin, ensure you have met the following requirements:
-
-* [Git](https://git-scm.com/downloads "Download Git") must be installed on your operating system.
-
-## Installing vCard
-
-To install **vCard**, follow these steps:
-
-Linux and macOS:
+## Run locally
 
 ```bash
-sudo git clone https://github.com/codewithsadee/vcard-personal-portfolio.git
+python3 -m http.server 8000
+# open http://localhost:8000
 ```
 
-Windows:
+A local server is needed (not `file://`) because the 3D viewer fetches URDF and mesh files.
+
+## Layout
+
+- `index.html` — all content, top to bottom: hero, highlights, about; Dexmate (legged humanoid, Vega);
+  Addverb (Elixis, Trakr, Syncro, Zippy AGVs, deployments); robots (3D viewer, gallery, personal
+  builds); experience, education, skills, contact. The Explore menu groups links the same way.
+- `assets/css/style.css` — design tokens and components.
+- `assets/js/script.js` — reveal-on-scroll, menu, carousels, robot filter, copy email; lazy-loads the viewer.
+- `assets/js/robot-viewer.js` — three.js + [urdf-loader](https://github.com/gkjohnson/urdf-loaders)
+  (both from jsDelivr, pinned), loaded only when the viewer section nears the screen.
+- `assets/robots/<id>/` — web-ready robots: a visual-only URDF plus decimated, quantized GLB meshes.
+  Each folder has a `SOURCE.md` (upstream repo, commit, license) and, where upstream has one, its `LICENSE`.
+- `assets/images/site/` — generated images: the hero lineup and the Vega renders.
+
+## Adding a robot to the viewer
 
 ```bash
-git clone https://github.com/codewithsadee/vcard-personal-portfolio.git
+python3 -m venv .venv && .venv/bin/pip install "numpy<2" trimesh fast-simplification==0.1.7 pycollada
+.venv/bin/python tools/urdf2web.py <id> path/to/robot.urdf <face budget> assets/robots [--base DIR]
 ```
 
-## Contact
-
-If you want to contact me you can reach me at [Twitter](https://www.x.com/codewithsadee_).
-
-## License
-
-MIT
+Then add a chip with `data-robot="<id>" data-urdf="./assets/robots/<id>/<id>.urdf"` to the viewer in
+`index.html`. If its URDF colours or all-zero pose look wrong, add entries to `RECOLOR` or `HOME` in
+`robot-viewer.js`.
